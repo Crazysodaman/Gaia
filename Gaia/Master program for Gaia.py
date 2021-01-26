@@ -8,7 +8,6 @@ import socket
 import select
 import math
 import random
-from pexecute.thread import ThreadLoom
 import os
 from led import all_leds
 import serial;
@@ -30,14 +29,8 @@ ssc.close
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM) #set pins to GPIO# like GPIO 4 is #7 on board
 
-# Some standard colors for the ring.
-#strip.set_pixel_rgb(60,  0xFF0000)  ##Red
-#strip.set_pixel_rgb(60, 0x00FF00) ##Green
-#strip.set_pixel_rgb(60, 0x0000FF)  ##Blue
 cfg.strip
 cfg.strip.clear_strip ()
-##
-
 
 ##start of code
 def ultimate_function():
@@ -47,13 +40,7 @@ def ultimate_function():
 
     if cfg.dstart ==1:
         runpy.run_module ('daignostics')
-        time.sleep (3)    
-    #start main program
-    os.popen( 'espeak -p70 -g10 -ven+f3 "It is: {}" --stdout |aplay' .format(cfg.lts))
-    #insert led normal color
-    
-def IMU():
-    runpy.run_module ('BerryIMU')
-loom.add_function(ultimate_function)
-loom.add_function(IMU)
-output+loom.execute()
+        time.sleep (3)
+
+#start main program
+   
