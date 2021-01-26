@@ -3,14 +3,13 @@ import sys
 import socket
 import os
 import config as cfg
-from apa102_pi.driver import apa102
-from apa102_pi.colorschemes import colorschemes
 import serial;
 from led import all_leds
 import led
-#import ssc32 as s32
+import ssc32 as s32
 import RPi.GPIO as GPIO
 
+#led setup
 ledclass= all_leds()
 
 os.popen( 'espeak -p70 -g20 -ven+f3 "Starting diagnostics" --stdout |aplay' )
@@ -29,12 +28,6 @@ if cfg.mbatt <=10:
     os.popen( 'espeak -p70 -g20 -ven+f3 "Charge or Replace Motor battery" --stdout |aplay')
     time.sleep (4)
 
-#os.popen( 'espeak -p70 -g20 -ven+f3 "Testing connection to Servo Controller" --stdout |aplay' )
-#time.sleep (3)
-#if ssc.isOpen():
-    #os.popen( 'espeak -p70 -g20 -ven+f3 "Connection Passed" --stdout |aplay' )
-#else:
-    #os.popen( 'espeak -p70 -g20 -ven+f3 "Connection Failed" --stdout |aplay' )
 if cfg.etest == 1:
     time.sleep (1)
     os.popen( 'espeak -p70 -g20 -ven+f3 "Electronic Test starting" --stdout |aplay' )
