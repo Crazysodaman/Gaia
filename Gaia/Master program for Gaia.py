@@ -16,14 +16,7 @@ import config as cfg #vars
 import RPi.GPIO as GPIO
 
 ## abbvations for coding perpisous
-loom= ThreadLoom(max_runner_cap=20)
 ledclass= all_leds()
-ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
-ssc.open
-ssc.close
-    ##used to command movements
-    ##ssc.close
-    ##ssc.write dont forget \r" .encode()
 
 ##GPIO PINS and what they are
 GPIO.setwarnings(False)
