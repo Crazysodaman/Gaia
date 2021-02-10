@@ -21,12 +21,8 @@ strip= apa102.APA102(num_led=60, global_brightness=llevel, mosi=10, sclk=11, ord
 time.sleep(0.2)
 
 ##GPIO PINS and what they are
-CRelay= 23
+#CRelay= 23
 
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM) #set pins to GPIO# like GPIO 4 is #7 on board
-GPIO.setup(CRelay, GPIO.OUT)
-GPIO.output(CRelay, GPIO.LOW)
 #Varables
 
 
