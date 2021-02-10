@@ -1,9 +1,7 @@
 import time
 import os
 import sys
-import concurrent.futures
-import subprocess
-import bmp388 as bmp
+import RPi.GPIO as GPIO
 
 from apa102_pi.driver import apa102
 from apa102_pi.colorschemes import colorschemes
@@ -21,6 +19,10 @@ emo_on=0 #emotions on
 llevel=5 #light level for led
 strip= apa102.APA102(num_led=60, global_brightness=llevel, mosi=10, sclk=11, order='rgb')
 time.sleep(0.2)
+
+##GPIO PINS and what they are
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM) #set pins to GPIO# like GPIO 4 is #7 on board
 
 #Varables
 
