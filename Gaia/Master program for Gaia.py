@@ -13,14 +13,9 @@ from led import all_leds
 import serial;
 import runpy
 import config as cfg #vars
-import RPi.GPIO as GPIO
 
 ## abbvations for coding perpisous
 ledclass= all_leds()
-
-##GPIO PINS and what they are
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM) #set pins to GPIO# like GPIO 4 is #7 on board
 
 cfg.strip
 cfg.strip.clear_strip ()
