@@ -16,15 +16,19 @@ emo_on=0 #emotions on
 # led set up
 # These two variables should be adjusted to reflect the number of LEDs you have
 # and how bright you want them.
-llevel=5 #light level for led
+llevel= 5 #light level for led
 strip= apa102.APA102(num_led=60, global_brightness=llevel, mosi=10, sclk=11, order='rgb')
 time.sleep(0.2)
 
 ##GPIO PINS and what they are
+CRelay= 23
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM) #set pins to GPIO# like GPIO 4 is #7 on board
-
+GPIO.setup(CRelay, GPIO.OUT)
+GPIO.output(CRelay, GPIO.LOW)
 #Varables
+
 
 lt= time.strftime("%A, %B, %Y, %H %M") #local time
 lts= time.strftime("%H %M") #lt short
