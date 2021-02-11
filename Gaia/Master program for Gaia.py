@@ -22,13 +22,15 @@ cfg.strip.clear_strip ()
 
 ##start of code
 def ultimate_function():
-    os.popen('espeak -p70 -g10 -ven+f3 "Hello I am Gaia" --stdout |aplay')
-    time.sleep (3)
+    
     ## diagnostic start
 
+
+#start main program
+If __name__ '__main__' :
+    os.popen('espeak -p70 -g10 -ven+f3 "Hello I am Gaia" --stdout |aplay')
+    time.sleep (3)
+    
     if cfg.dstart ==1:
         runpy.run_module ('daignostics')
         time.sleep (3)
-
-#start main program
-   
