@@ -63,11 +63,16 @@ if cfg.etest == 1:
     time.sleep (5)
     os.popen( 'espeak -p70 -g20 -ven+f3 "Electronic Test complete" --stdout |aplay' )
     time.sleep (4)
+
+if cfg.testcharge == 1:
+time.sleep (2)
+Charging.relayon()
 if cfg.servotest == 1:
     os.popen( 'espeak -p70 -g20 -ven+f3 "Servo test starting" --stdout |aplay' )
     time.sleep (3)
     s32.default()
     os.popen( 'espeak -p70 -g20 -ven+f3 "Servo test Completed" --stdout |aplay' )
     time.sleep (3)
+
 os.popen( 'espeak -p70 -g20 -ven+f3 "Diagnostics Completed" --stdout |aplay' )
 time.sleep (3)
