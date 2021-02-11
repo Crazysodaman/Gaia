@@ -33,7 +33,7 @@ def default ():
     ssc.write ("#16 P1500 #17 P1500 #18 P1500 T2500 \r".encode())
     ssc.write ("#19 P1500 #20 P1500 #21 P1500 T2500 \r".encode())
     ssc.write ("#22 P1500 #23 P1500 #24 P1500 T2500 \r".encode())
-    scc.close
+    ssc.close
 
 def forward (ft):
     t_end= time.time() + ft
