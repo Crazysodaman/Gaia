@@ -30,15 +30,17 @@ time.sleep(0.2)
 
 lt= time.strftime("%A, %B, %Y, %H %M") #local time
 lts= time.strftime("%H %M") #lt short
-cbatt= Cbatt 
-mbatt= Mbatt
 Cbatt= 100 #computer battery %
 Mbatt= 100 #moter battery %
+cbatt= Cbatt 
+mbatt= Mbatt
+
 charging=0
 emos=0 #emotion state
 #IMU varables
-KX=kX #X Kfilter output
-KY=kX #Y Kfilter output
 kX=0
 kY=0
+KX=kX #X Kfilter output
+KY=kX #Y Kfilter output
+
 
