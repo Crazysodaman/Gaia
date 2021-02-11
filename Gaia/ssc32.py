@@ -2,11 +2,8 @@ import serial;
 import time
 
 ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
-32op= ssc.open
-32cl= ssc.close
-
-32op
-32cl
+ssc.open
+ssc.close
 
     ##used to command movements
     ##ssc.close
