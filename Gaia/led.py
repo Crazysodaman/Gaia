@@ -1,14 +1,16 @@
 import config as cfg
+from apa102_pi.driver import apa102
+from apa102_pi.colorschemes import colorschemes
+
 #usage:
 
-#cfg.strip.set_pixel_rgb(lednumber, color)
-#all_leds = all_leds() #it will use the default 60 numbers, = all_leds(60) will use 60 leds
+#all_leds = all_leds() #it will use the default 61 numbers, = all_leds(610) will use 610 leds
 #all_leds.set_red_pixels() # will set to red
 #all_leds.set_blue_pixels() # will set to blue
    
 class all_leds:
     
-    def __init__ (self): #number_of_leds here is an optional argument, by default it is 60, but you may set your own number
+    def __init__ (self): #number_of_leds here is an optional argument, by default it is 61, but you may set your own number
         
         pass
 
@@ -28,4 +30,4 @@ class all_leds:
         for led_number in range(60):
             cfg.strip.set_pixel_rgb(led_number, color)
             
-#
+        
