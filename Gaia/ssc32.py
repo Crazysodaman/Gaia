@@ -81,14 +81,14 @@ def death1 (ft):
         
 
 def servotest ()
-   ssc.open
-        ssc.write ("#7 P1500 #6 P1500 #20 P1500 #19 P1500 #1 P1500 #0 P1500 T2500 \r".encode())
-        time.sleep(0.2)
-        ssc.write ("#8 P1500 #21 P1500 #2 P1500 T2500 \r".encode())
-        time.sleep (0.2)
-        ssc.write ("#7 P100 #6 P100 #20 P100 #19 P100 #1 P100 #0 P100 T2500 \r".encode())
-        time.sleep (0.2)
-        ssc.write ("#23 P1500 #22 P1500 #4 P1500 #3 P1500 #17 P1500 #16 P1500 T2500 \r".encode())
-        time.sleep(0.2)
-        ssc.write ("#24 P500 #5 P500 #18 P500 T2500 \r".encode())
-        time.sleep (0.2)
+    ssc.open
+    ssc.write ("#7 P1500 #6 P1500 #20 P1500 #19 P1500 #1 P1500 #0 P1500 T2500 \r".encode())
+    time.sleep(0.2)
+    ssc.write ("#8 P1500 #21 P1500 #2 P1500 T2500 \r".encode())
+    time.sleep (0.2)
+    ssc.write ("#7 P100 #6 P100 #20 P100 #19 P100 #1 P100 #0 P100 T2500 \r".encode())
+    time.sleep (0.2)
+    ssc.write ("#23 P1500 #22 P1500 #4 P1500 #3 P1500 #17 P1500 #16 P1500 T2500 \r".encode())
+    time.sleep(0.2)
+    ssc.write ("#24 P500 #5 P500 #18 P500 T2500 \r".encode())
+    time.sleep (0.2)
