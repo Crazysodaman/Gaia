@@ -88,6 +88,8 @@ def backwardA (tt):
     ssc.write ("#0 P1500 #1 P1500 #2 P1500 #3 P1500 #4 P1500 #5 P1500 #6 P1500 #7 P1500 #8 P1500 #16 P1500 #17 P1500 #18 P1500 #19 P1500 #20 P1500 #21 P1500 #22 P1500 #23 P1500 #24 P1500 T100 \r".encode())
     ssc.close        
 
+
+    
     
 def death1 (ft):
     t_end= time.time() + ft
@@ -104,7 +106,7 @@ def death1 (ft):
         ssc.write ("#24 P500 #5 P500 #18 P500 T2500 \r".encode())
         time.sleep (0.2)
         ssc.write ("#23 P500 #22 P500 #4 P500 #3 P500 #17 P500 #16 P500 T2500 \r".encode())
-        
+        ssc.close
 
 def servotest ():
     ssc.open
@@ -118,3 +120,4 @@ def servotest ():
     time.sleep(0.2)
     ssc.write ("#24 P500 #5 P500 #18 P500 T2500 \r".encode())
     time.sleep (0.2)
+    ssc.close
