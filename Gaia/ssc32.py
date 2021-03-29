@@ -27,34 +27,57 @@ ssc.close
 
 def default ():
     ssc.open
-    ssc.write ("#0 P1500 #1 P1500 #2 P1500 T1000 \r".encode())
-    ssc.write ("#3 P1500 #4 P1500 #5 P1500 T1000 \r".encode())
-    ssc.write ("#6 P1500 #7 P1500 #8 P1500 T1000 \r".encode())
-    ssc.write ("#16 P1500 #17 P1500 #18 P1500 T1000 \r".encode())
-    ssc.write ("#19 P1500 #20 P1500 #21 P1500 T1000 \r".encode())
-    ssc.write ("#22 P1500 #23 P1500 #24 P1500 T1000 \r".encode())
+    ssc.write ("#0 P1500 #1 P1500 #2 P1500 T100 \r".encode())
+    ssc.write ("#3 P1500 #4 P1500 #5 P1500 T100 \r".encode())
+    ssc.write ("#6 P1500 #7 P1500 #8 P1500 T100 \r".encode())
+    ssc.write ("#16 P1500 #17 P1500 #18 P1500 T100 \r".encode())
+    ssc.write ("#19 P1500 #20 P1500 #21 P1500 T100 \r".encode())
+    ssc.write ("#22 P1500 #23 P1500 #24 P1500 T100 \r".encode())
+    time.sleep(2)
     ssc.close
+
+def hightHA ():
+    ssc.open
+    ssc.write ("#0 P1700 #3 P1700 #6 P1700 T100 \r".encode()) #R legs
+    ssc.write ("#1 P1700 #4 P1700 #7 P1700 T100 \r".encode()) #R thighs
+    ssc.write ("#16 P1300 #19 P1300 #22 P1300 T100 \r".encode()) #L legs
+    ssc.write ("#17 P1300 #20 P1300 #23 P1300 T100 \r".encode()) #L Thighs
+    ssc.close
+def hightHB ():
+    ssc.open
+    ssc.write ("#0 P2000 #3 P2000 #6 P2000 T100 \r".encode()) #R legs
+    ssc.write ("#1 P2000 #4 P2000 #7 P2000 T100 \r".encode()) #R thighs
+    ssc.write ("#16 P1000 #19 P1000 #22 P1000 T100 \r".encode()) #L legs
+    ssc.write ("#17 P1000 #20 P1000 #23 P1000 T100 \r".encode()) #L Thighs
+def hightW ():
+    ssc.open
+    ssc.write ("#0 P1800 #3 P1800 #6 P1500 T100 \r".encode())
+    ssc.write ("#16 P1200 #19 P1200 #22 P1500 T100 \r".encode())
+    scc.close
+def hightL ():
+    ssc.open
+    scc.clsoe
 
 def forwardA (tt):
     ts=0.3
     t_end= time.time() + tt
     while time.time() < t_end: #or snr.ldr1 <10:
         ssc.open
-        ssc.write ("#7 P1100 #20 P1900 #1 P900 T100 \r".encode()) #a up
+        ssc.write ("#7 P1250 #20 P1750 #1 P1250 T100 \r".encode()) #a up
         time.sleep (ts)
-        ssc.write ("#8 P1100 #21 P1900 #2 P1100 T100 \r".encode()) #a move
+        ssc.write ("#8 P900 #21 P2100 #2 P900 T100 \r".encode()) #a move
         time.sleep (ts)
         ssc.write ("#7 P1500 #20 P1500 #1 P1500 T100 \r".encode()) #a down
         time.sleep (ts)
-        ssc.write ("#23 P1900 #4 P900 #17 P1900 T100 \r".encode()) #b up
+        ssc.write ("#23 P1750 #4 P1250 #17 P1750 T100 \r".encode()) #b up
         time.sleep (ts)
         ssc.write ("#8 P1500 #21 P1500 #2 P1500 T100 \r".encode()) #a move
         time.sleep (ts)
-        ssc.write ("#24 P1900 #5 P1100 #18 P1900 T100 \r".encode()) #b move
+        ssc.write ("#24 P2100 #5 P900 #18 P2100 T100 \r".encode()) #b move
         time.sleep (ts)
         ssc.write ("#23 P1500 #4 P1500 #17 P1500 T100 \r".encode()) # b down
         time.sleep (ts)
-        ssc.write ("#7 P1100 #20 P1900 #1 P900 T100 \r".encode()) #a up
+        ssc.write ("#7 P1250 #20 P1750 #1 P1250 T100 \r".encode()) #a up
         time.sleep (ts)
         ssc.write ("#24 P1500 #5 P1500 #18 P1500 T100 \r".encode()) #b move
         time.sleep (ts)

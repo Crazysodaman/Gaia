@@ -26,7 +26,7 @@ class all_leds:
         for led_number in range(60):
             cfg.strip.set_pixel_rgb(led_number, 0x0000FF)
             
-    def set_pixels(self, color): #for color it is Hex and 0x to the start of the color)
+    def set_pixels(self, color):
         for led_number in range(60):
             cfg.strip.set_pixel_rgb(led_number, color)
             
