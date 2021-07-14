@@ -34,3 +34,8 @@ If __name__ '__main__' :
     if cfg.dstart ==1:
         runpy.run_module ('daignostics')
         time.sleep (3)
+      
+    if __name__ == '__main__':
+    p = Process(target=IMB, args=('bob',))
+    p.start()
+    p.join()
