@@ -10,8 +10,9 @@ import math
 import random
 import os
 from led import all_leds
-import serial;
 import runpy
+import serial;
+from BerryIMU import BerryIMU
 import config as cfg #vars
 
 ## abbvations for coding perpisous
@@ -19,23 +20,19 @@ ledclass= all_leds()
 
 cfg.strip
 cfg.strip.clear_strip ()
-
+kalmanX=1
 ##start of code
-def ultimate_function():
-    
-    ## diagnostic start
-
 
 #start main program
-If __name__ '__main__' :
-    os.popen('espeak -p70 -g10 -ven+f3 "Hello I am Gaia" --stdout |aplay')
-    time.sleep (3)
+#if __name__ == '__main__' :
+    #os.popen('espeak -p70 -g10 -ven+f3 "Hello I am Gaia" --stdout |aplay')
+    #time.sleep (3)
     
-    if cfg.dstart ==1:
-        runpy.run_module ('daignostics')
-        time.sleep (3)
-      
-    if __name__ == '__main__':
-    p = Process(target=IMB, args=('bob',))
-    p.start()
-    p.join()
+    ## diagnostic start
+if cfg.dstart ==1:
+    runpy.run_module ('daignostics')
+    time.sleep (3)
+    pass
+
+BerryIMU()
+print (cfg.kalmanY)

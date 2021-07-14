@@ -2,15 +2,17 @@ import time
 import os
 import sys
 import RPi.GPIO as GPIO
-
+from multiprocessing import Process, Pipe
+from BerryIMU import BerryIMU
 from apa102_pi.driver import apa102
 from apa102_pi.colorschemes import colorschemes
 
 # on off comands
 
-dstart=1 #start daignostics
-etest=1     #eletronics test 1=on 0=off
-servotest=1   #servo test 1=on 0=off
+dstart=0 #start daignostics
+etest=0     #eletronics test 1=on 0=off
+servotest=0   #servo test 1=on 0=off
+IMU=1 #IMU on off
 emo_on=0 #emotions on
 
 # led set up
@@ -38,9 +40,14 @@ mbatt= Mbatt
 charging=0
 emos=0 #emotion state
 #IMU varables
-kX=0
-kY=0
-KX=kX #X Kfilter output
-KY=kX #Y Kfilter output
+kalmanX =0
+kalmanY =0
+tiltCompensatedHeading =0
+ACCx =0
+ACCy=0
+ACCz=0
+gyroXangle=0
+gyroYangle=0
+gyroZangle=0
 
-
+        

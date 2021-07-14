@@ -65,7 +65,7 @@ if cfg.etest == 1:
     time.sleep (4)
 
 if cfg.testcharge == 1:
-time.sleep (2)
+    time.sleep (2)
 Charging.relayon()
 if cfg.servotest == 1:
     os.popen( 'espeak -p70 -g20 -ven+f3 "Servo test starting" --stdout |aplay' )
