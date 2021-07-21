@@ -395,16 +395,9 @@ class IMUoutput:
 
             # kalmanX, kalmanY
 
-            #cfg.kalmanX= kalmanX
-            #conn.send (kalmanY)
-            #conn.send (tiltCompensatedHeading)
-            #conn.send (ACCx)
-            #conn.send (ACCy)
-            #conn.send (ACCz)
-            #conn.send (gyroXangle)
-            #conn.send (gyroYangle)
-            #conn.send (gyroZangle)
-            yield kalmanX, kalmanY, tiltCompensatedHeading, ACCx, ACCy, ACCz, gyroXangle, gyroYangle, gyroZangle
+            cfg.imu_out= kalmanX, kalmanY, tiltCompensatedHeading, ACCx, ACCy, ACCz, gyroXangle, gyroYangle, gyroZangle
+
+            #yield kalmanX, kalmanY, tiltCompensatedHeading, ACCx, ACCy, ACCz, gyroXangle, gyroYangle, gyroZangle
 
             if 0:                       #Change to '0' to stop showing the angles from the accelerometer
                 outputString += "# ACCX Angle %5.2f ACCY Angle %5.2f #  " % (AccXangle, AccYangle)

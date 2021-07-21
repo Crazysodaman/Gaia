@@ -9,6 +9,7 @@ import select
 import math
 import random
 import os
+import threading as th
 from led import all_leds
 import runpy
 import serial;
@@ -32,7 +33,6 @@ kalmanX=1
 if cfg.dstart ==1:
     runpy.run_module ('daignostics')
     time.sleep (3)
-    pass
 
-BerryIMU()
+
 print (cfg.kalmanY)

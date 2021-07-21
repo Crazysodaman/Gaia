@@ -14,7 +14,7 @@ etest=0     #eletronics test 1=on 0=off
 servotest=0   #servo test 1=on 0=off
 IMU=1 #IMU on off
 emo_on=0 #emotions on
-
+thr_on=1
 # led set up
 # These two variables should be adjusted to reflect the number of LEDs you have
 # and how bright you want them.
@@ -49,5 +49,4 @@ ACCz=0
 gyroXangle=0
 gyroYangle=0
 gyroZangle=0
-
-        
+imu_out=0
