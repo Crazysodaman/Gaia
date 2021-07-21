@@ -192,10 +192,26 @@ IMU.initIMU()       #Initialise the accelerometer, gyroscope and compass
 
 class IMUoutput:
     def __init__ (self):
+    
         pass
     
     def IMU (self):
-    
+        global gyroXangle
+        global gyroYangle
+        global gyroZangle
+        global CFangleX
+        global CFangleY
+        global CFangleXFiltered
+        global CFangleYFiltered
+        global kalmanX
+        global kalmanY
+        global oldXMagRawValue
+        global oldYMagRawValue
+        global oldZMagRawValue
+        global oldXAccRawValue
+        global oldYAccRawValue
+        global oldZAccRawValue
+        
         while True:
 
             #Read the accelerometer,gyroscope and magnetometer values
@@ -217,8 +233,8 @@ class IMUoutput:
 
 
             ##Calculate loop Period(LP). How long between Gyro Reads
-            b = datetime.datetime.now() - a
             a = datetime.datetime.now()
+            b = datetime.datetime.now() - a
             LP = b.microseconds/(1000000*1.0)
             outputString = "Loop Time %5.2f " % ( LP )
 
@@ -395,11 +411,19 @@ class IMUoutput:
 
             # kalmanX, kalmanY
 
-            cfg.imu_out= kalmanX, kalmanY, tiltCompensatedHeading, ACCx, ACCy, ACCz, gyroXangle, gyroYangle, gyroZangle
+            cfg.kalmanX =kalmanX
+            cfg.kalmanY =kalmanY
+            cfg.tiltCompensatedHeading =tiltCompensatedHeading
+            cfg.ACCx= ACCx
+            cfg.ACCy= ACCy
+            cfg.ACCz= ACCz
+            cfg.gyroXangle= gyroXangle
+            cfg.gyroYangle= gyroYangle
+            cfg.gyroZangle= gyroZangle
 
             #yield kalmanX, kalmanY, tiltCompensatedHeading, ACCx, ACCy, ACCz, gyroXangle, gyroYangle, gyroZangle
 
-            if 0:                       #Change to '0' to stop showing the angles from the accelerometer
+            if 1:                       #Change to '0' to stop showing the angles from the accelerometer
                 outputString += "# ACCX Angle %5.2f ACCY Angle %5.2f #  " % (AccXangle, AccYangle)
 
             if 0:                       #Change to '0' to stop  showing the angles from the gyro
@@ -415,6 +439,8 @@ class IMUoutput:
                 outputString +="# kalmanX %5.2f   kalmanY %5.2f #" % (kalmanX,kalmanY)
 
             #print(outputString)
+            #print(kalmanX)
+            #print(cfg.gyroXangle)
 
             #slow program down a bit, makes the output more readable
             #time.sleep(0.03)

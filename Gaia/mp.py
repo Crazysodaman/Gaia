@@ -7,17 +7,18 @@ import Master
 lock = th.Lock()
 IMU= BerryIMU.IMUoutput()
 
-def
 
 if __name__ == '__main__':
-    lock.acquire()
-    t1 = th.Thread(target=master)
+    #lock.acquire()
+    #t1 = th.Thread(target=Master)
     t2 = th.Thread(target=IMU.IMU)
     #t3 = th.Thread(target=print_numbers, args=(5,))
-    t1.start()
+    #t1.start()
     t2.start()
     #t3.start()
 
-    t1.join()
-    t2.join()
+    #t1.join()
+    #t2.join()
     #t3.join()
+    time.sleep(1.5)
+    print(cfg.tiltCompensatedHeading)

@@ -3,7 +3,7 @@ import os
 import sys
 import RPi.GPIO as GPIO
 from multiprocessing import Process, Pipe
-from BerryIMU import BerryIMU
+#from BerryIMU import BerryIMU
 from apa102_pi.driver import apa102
 from apa102_pi.colorschemes import colorschemes
 
@@ -43,10 +43,12 @@ emos=0 #emotion state
 kalmanX =0
 kalmanY =0
 tiltCompensatedHeading =0
-ACCx =0
+ACCx=0
 ACCy=0
 ACCz=0
 gyroXangle=0
 gyroYangle=0
 gyroZangle=0
-imu_out=0
+
+
+

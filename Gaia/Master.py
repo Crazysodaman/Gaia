@@ -13,7 +13,6 @@ import threading as th
 from led import all_leds
 import runpy
 import serial;
-from BerryIMU import BerryIMU
 import config as cfg #vars
 
 ## abbvations for coding perpisous
