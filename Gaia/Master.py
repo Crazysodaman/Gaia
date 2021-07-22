@@ -33,5 +33,7 @@ if cfg.dstart ==1:
     runpy.run_module ('daignostics')
     time.sleep (3)
 
+if cfg.EN==0 and cfg.run_mode==1:
+runpy.run_module ('mp')
 
 print (cfg.kalmanY)
