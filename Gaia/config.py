@@ -13,7 +13,8 @@ etest=0     #eletronics test 1=on 0=off
 servotest=0   #servo test 1=on 0=off
 IMU=1 #IMU on off
 emo_on=0 #emotions on
-thr_on=1
+run_mode=1 #run
+EN=3 #error number
 # led set up
 # These two variables should be adjusted to reflect the number of LEDs you have
 # and how bright you want them.
@@ -45,7 +46,6 @@ mbatt= Mbatt
 charging=0
 emos=0 #emotion state
 
-EN=3 #error code
 
 #IMU varables
 kalmanX =0
