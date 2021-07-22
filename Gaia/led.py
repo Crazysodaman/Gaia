@@ -31,7 +31,7 @@ for led_number in range(60):
             cfg.strip.set_pixel_rgb(led_number, 0xFF0000, 20)
 
 def set_low_motor_bat(self):
-led_num_list[57,58,0,1,2,13,14,15,16,17,28,29,30,31,32,43,44,45,46,47]
+led_num_list=[57,58,0,1,2,13,14,15,16,17,28,29,30,31,32,43,44,45,46,47]
 for led_number in led_num_list:
 strip.set_pixel_rgb(led_number, 0xFF0000)
             
