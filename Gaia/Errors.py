@@ -27,7 +27,7 @@ def Erun():
             e.writelines(cfg.tm(4))
             e.write('Johnny is hungery \n')
             e.close()
-            run_mode=0
+            cfg.run_mode=0
 break
 
 if cfg.EN ==3:
