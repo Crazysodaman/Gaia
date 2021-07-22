@@ -26,17 +26,17 @@ class all_leds:
         for led_number in range(60):
             strip.set_pixel_rgb(led_number, 0x0000FF)
 
-    def set_Critical_Error_pixels(self,):#for color it is Hex and 0x to the start of the color
+    def set_Critical_Error_pixels(self,brightness=20):#for color it is Hex and 0x to the start of the color
 for led_number in range(60):
-            cfg.strip.set_pixel_rgb(led_number, 0xFF0000, 20)
+            cfg.strip.set_pixel_rgb(led_number, 0xFF0000, brightness)
 
-def set_low_motor_bat(self):
+def set_low_motor_bat(self, brightness=20):
 led_num_list=[57,58,0,1,2,13,14,15,16,17,28,29,30,31,32,43,44,45,46,47]
 for led_number in led_num_list:
-strip.set_pixel_rgb(led_number, 0xFF0000)
+strip.set_pixel_rgb(led_number, 0xFF0000, brightness)
             
-    def set_pixels(self, color):#for color it is Hex and 0x to the start of the color)
+    def set_pixels(self, color, brightness):#for color it is Hex and 0x to the start of the color)
         for led_number in range(60):
-            cfg.strip.set_pixel_rgb(led_number, color)
+            cfg.strip.set_pixel_rgb(led_number, color, brightness)
             
 for led_number in range(60):        
