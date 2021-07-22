@@ -30,7 +30,7 @@ class all_leds:
         for led_number in range(60):
             cfg.strip.set_pixel_rgb(led_number, 0xFF0000, 20)
 
-def set_low_motor_bat(self)
+def set_low_motor_bat(self):
 cfg.strip.set_pixel_rgb(58, 0xFF0000)#
 cfg.strip.set_pixel_rgb(59, 0xFF0000)
 cfg.strip.set_pixel_rgb(0, 0xFF0000) #
@@ -41,8 +41,8 @@ cfg.strip.set_pixel_rgb(14, 0xFF0000)
 cfg.strip.set_pixel_rgb(15, 0xFF0000) #
 cfg.strip.set_pixel_rgb(16, 0xFF0000)
 cfg.strip.set_pixel_rgb(17, 0xFF0000)#
-cfg.strip.set_pixel_rgb(18, 0xFF0000)#
-cfg.strip.set_pixel_rgb(19, 0xFF0000)
+cfg.strip.set_pixel_rgb(28, 0xFF0000)#
+cfg.strip.set_pixel_rgb(29, 0xFF0000)
 cfg.strip.set_pixel_rgb(30, 0xFF0000)#
 cfg.strip.set_pixel_rgb(31, 0xFF0000)
 cfg.strip.set_pixel_rgb(32, 0xFF0000)#
@@ -56,4 +56,4 @@ cfg.strip.set_pixel_rgb(47, 0xFF0000)#
         for led_number in range(60):
             cfg.strip.set_pixel_rgb(led_number, color)
             
-        
+for led_number in range(60):        
