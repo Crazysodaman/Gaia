@@ -27,13 +27,17 @@ def Erun():
             e.writelines(cfg.tm(4))
             e.write('Johnny is hungery \n')
             e.close()
-            cfg.strip.clear_strip()
-            led.set_Critical_Error_pixels()
-        
-            cfg.strip.show()
-            time.sleep(1)
-            cfg.strip.clear_strip()
-            time.sleep(1)
+            
+break
+
+if cfg.EN ==3:
+while True:
+cfg.strip.clear_strip()
+led.set_Critical_Error_pixels()
+cfg.strip.show()
+time.sleep(1)
+cfg.strip.clear_strip()
+time.sleep(1)
         
             
             
