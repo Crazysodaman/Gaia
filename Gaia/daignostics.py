@@ -14,7 +14,7 @@ ledclass= all_leds()
 
 os.popen( 'espeak -p70 -g20 -ven+f3 "Starting diagnostics" --stdout |aplay' )
 time.sleep(3)
-os.popen( 'espeak -p70 -g20 -ven+f3 "Local Time: {}" --stdout |aplay' .format(cfg.lt))
+os.popen( 'espeak -p70 -g20 -ven+f3 "Local Time: {}" --stdout |aplay' .format(cfg.tm(1)))
 time.sleep(7)
 time.sleep (4)
 os.popen( 'espeak -p70 -g20 -ven+f3 "Computer battery {}%" --stdout |aplay' .format(cfg.cbatt))
