@@ -34,10 +34,11 @@ if cfg.dstart ==1:
     time.sleep (3)
 
 if cfg.EN==0 and cfg.run_mode==1:
-runpy.run_module ('mp')
+    runpy.run_module ('mp')
 
 if cfg.EN>0 and cfg.EN!=3 and cfg.run_mode==1:
-runpy.run_module ('daignostics')
+    runpy.run_module ('daignostics')
+    time.sleep (3)
 
 if cfg.EN=3: #fatal error handler
 
