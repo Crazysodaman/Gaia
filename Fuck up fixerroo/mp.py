@@ -1,7 +1,8 @@
 import threading as th
 import time
 import config as cfg
-from Gaia import BerryIMU
+import BerryIMU
+import Master
 import timechecker
 import Errors
 
