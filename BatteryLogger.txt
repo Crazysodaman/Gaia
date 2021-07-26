@@ -1,3 +1,4 @@
-July/23/2021; 17:10:32Motor Battery 30 %
-July/23/2021;17:11:04Motor Battery 30 %
-July/23/2021;17:11:35:...Motor Battery 30 %
+07/26/2021 09:20:12: Computer Battery 5 %
+07/26/2021 09:21:09: Computer Battery 5 %
+07/26/2021 09:22:03: Computer Battery 5 %
+07/26/2021 11:19:19: Computer Battery 5 %
