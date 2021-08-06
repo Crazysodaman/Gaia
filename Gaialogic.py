@@ -1,5 +1,6 @@
 import time
 import data
+import GaiaB as gb
 
 
 def send_gaia():
@@ -61,6 +62,42 @@ def critical_data_send_gaia(var):
         return
     else:
         pass
+
+
+def servomove(ms: int, *args: tuple) -> None:
+    """
+    A = [(1,1500),(2,1500)]
+    Exmple: leg(100,(1,1500),(2,1500),(3,1500))
+    :param ms: Time it has to move
+    :param args: (# (servo), P(position))
+    """
+    command: str = ""
+    for servo in args:
+        command += f"#{servo[0]} P{servo[1]} "
+    command += f"T{ms} \r"
+    with serial.Serial("/dev/ttyUSB0", 115200, timeout=0) as ssc:
+        ssc.write(command.encode())
+
+def low_battery():
+    mf = open('log.txt', "a")
+    if data.send_cbatt() < 10 and data.send_mbatt() < 10:
+        mf.write(time.strftime("%m/%d/%Y;%H:%M:%S: ") + "Computer Battery Low \n")
+        mf.write(time.strftime("%m/%d/%Y;%H:%M:%S: ") + "Motor Battery Low \n")
+        mf.close()
+    elif data.send_cbatt() < 10:
+        mf.write(time.strftime("%m/%d/%Y;%H:%M:%S: ") + "Computer Battery Low \n")
+        mf.close()
+    elif data.send_mbatt() < 10:
+        mf.write(time.strftime("%m/%d/%Y;%H:%M:%S: ") + "Motor Battery Low \n")
+        mf.close()
+    print("yes")
+    change_needs_charging(1)
+
+def change_needs_charging(data):
+    gb.needscharging=data
+
+def send_needs_charging():
+    return gb.needscharging
 
 if __name__ == '__main__':
     pass
