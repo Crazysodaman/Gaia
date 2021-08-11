@@ -244,8 +244,14 @@ def allbullshit():
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     
     servomove(500,(3,2500),(15,1700),(6,500))
     A= (15,3,6)
     time.sleep(1)
     print (sendservopos(A))
+=======
+
+    change_mbatt(5)
+    change_battery(5,5)
+>>>>>>> c81293817b5001e8744d6d18babf5f2abe957aa7
