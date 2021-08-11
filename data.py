@@ -223,10 +223,20 @@ def sendservopos(servo: tuple):
 
     Exp: A= 1,2,3,4,5
     """
-    command: str = ""
-    command += f"QP{servo} \r"
-    with serial.Serial("/dev/ttyUSB0", 115200, timeout=0) as ssc:
-        return ssc.read(command.decode("ascii"))
+    #byt=len (servo)
+    command = " "
+    for serv in servo:
+        command += "QP" + str(serv) + " "
+    command += "\r"
+    with serial.Serial("/dev/ttyUSB0", 115200, timeout=5) as ssc:
+        ssc.write (command.encode())
+        time.sleep(0.01)
+        re=ssc.readall()
+        rea=[]
+        for letter in re:
+            rea.append(letter *10)
+        rea=tuple(rea)
+        return rea
 
 
 def allbullshit():
@@ -234,6 +244,8 @@ def allbullshit():
 
 
 if __name__ == '__main__':
-
-    change_mbatt(5)
-    change_battery(5,5)
+    
+    servomove(500,(3,2500),(15,1700),(6,500))
+    A= (15,3,6)
+    time.sleep(1)
+    print (sendservopos(A))
