@@ -515,3 +515,10 @@
 07/26/2021;11:37:27: Computer Battery Low 
 07/26/2021;11:37:27: Motor Battery Low 
 07/26/2021 11:37:27: Connected and charging
+08/11/2021 18:14:13: Starting Up Gaia in mode: OS start 
+08/11/2021 18:14:47: Starting Up Gaia in mode: OS start 
+08/11/2021 18:19:11: Starting Up Gaia in mode: Diagnostics
+08/11/2021 18:27:22: Starting Up Gaia in mode: OS start 
+08/11/2021 18:27:44: Starting Up Gaia in mode: OS start 
+08/11/2021 18:28:40: Starting Up Gaia in mode: OS start 
+08/11/2021 18:29:08: Starting Up Gaia in mode: OS start 

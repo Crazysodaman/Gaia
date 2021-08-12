@@ -1,5 +1,6 @@
 import time
-EM= 0
+import led
+EM= -1
 
 def Main():
     # lock.acquire()
@@ -17,15 +18,24 @@ def Main():
     #t3.join()
 
 if __name__ == '__main__':
+    led.strip.clear_strip ()
+    time.sleep(0.01)
     mf = open('log.txt', "a")
     mf.write(time.strftime("%m/%d/%Y %H:%M:%S: ")+ "Starting Up Gaia in mode: ")
-    if EM==0:
+    if EM== -1:
+        mf.write ("OS start \n") #OS starts and Gaia does not
+        mf.close()
+    elif EM==0:
         mf.write("Normal\n")
         mf.close()
         Main()
     elif EM==1:
         mf.write("Safe\n")
         mf.close()
+        led.set_Critical_Error_pixels()
+        led.strip.show()
     elif EM==2:
         mf.write("Diagnostics\n")
         mf.close()
+        led.set_Critical_Error_pixels()
+        led.strip.show()

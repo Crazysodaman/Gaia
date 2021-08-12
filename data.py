@@ -228,7 +228,7 @@ def sendservopos(servo: tuple):
     for serv in servo:
         command += "QP" + str(serv) + " "
     command += "\r"
-    with serial.Serial("/dev/ttyUSB0", 115200, timeout=5) as ssc:
+    with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
         ssc.write (command.encode())
         time.sleep(0.01)
         re=ssc.readall()
@@ -244,14 +244,8 @@ def allbullshit():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     
-    servomove(500,(3,2500),(15,1700),(6,500))
+    servomove(500,(3,500),(15,750),(6,1500))
     A= (15,3,6)
-    time.sleep(1)
+    
     print (sendservopos(A))
-=======
-
-    change_mbatt(5)
-    change_battery(5,5)
->>>>>>> c81293817b5001e8744d6d18babf5f2abe957aa7
