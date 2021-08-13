@@ -28,8 +28,8 @@ def set_Critical_Error_pixels(brightness=20):  # for color it is Hex and 0x to t
             strip.show()
             time.sleep(0.5)
             strip.clear_strip()
-            if EM<=0
-            break
+            if EM<=0:
+                break
 
 def set_low_motor_bat(brightness=20):
     led_num_list = [57, 58, 0, 1, 2, 13, 14, 15, 16, 17, 28, 29, 30, 31, 32, 43, 44, 45, 46, 47]

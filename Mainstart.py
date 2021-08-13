@@ -1,4 +1,5 @@
 import time
+from subprocess import call
 import led
 EM= -1
 
@@ -34,6 +35,10 @@ if __name__ == '__main__':
         mf.close()
         led.set_Critical_Error_pixels()
         led.strip.show()
+        time.sleep(10)
+        call("sudo shutdown -h now", shell=True)
+
+
     elif EM==2:
         mf.write("Diagnostics\n")
         mf.close()
