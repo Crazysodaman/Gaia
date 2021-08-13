@@ -56,9 +56,9 @@ def critical_data_send_gaia(var):
     """
     :param var: 1-CBatt low, 2-MBatt low
     """
-    if var ==1 and receive_batt_data(1) < 10:
+    if var == 1 and receive_batt_data(1) < 10:
         return
-    elif var ==2 and receive_batt_data(2) < 10:
+    elif var == 2 and receive_batt_data(2) < 10:
         return
     else:
         pass
@@ -78,6 +78,7 @@ def servomove(ms: int, *args: tuple) -> None:
     with serial.Serial("/dev/ttyUSB0", 115200, timeout=0) as ssc:
         ssc.write(command.encode())
 
+
 def low_battery():
     mf = open('log.txt', "a")
     if data.send_cbatt() < 10 and data.send_mbatt() < 10:
@@ -93,11 +94,14 @@ def low_battery():
     print("yes")
     change_needs_charging(1)
 
+
 def change_needs_charging(data):
-    gb.needscharging=data
+    gb.needscharging = data
+
 
 def send_needs_charging():
     return gb.needscharging
+
 
 if __name__ == '__main__':
     pass

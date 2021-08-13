@@ -2,11 +2,12 @@ import time
 import Gaialogic as glog
 import data
 
-needscharging=0
+needscharging = 0
 
 
 def send_gl():
     glog.receive_gaia()
+
 
 def critical_data_received(var):
     """
@@ -14,16 +15,17 @@ def critical_data_received(var):
     """
     pass
 
+
 def send_needs_charging():
     return glog.needscharging
 
 
 def battery_charging():
-    #TODO build charging code
-    #if touch sinser is == 1:
+    # TODO build charging code
+    # if touch sinser is == 1:
     print("yes")
-    if send_needs_charging()==1 and is_charging()==1:
-        while data.send_mbatt() <95 or data.send_cbatt() <95:
+    if send_needs_charging() == 1 and is_charging() == 1:
+        while data.send_mbatt() < 95 or data.send_cbatt() < 95:
             print("charging")
         ba = open('log.txt', "a")
         ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Charging Completed\n")
@@ -35,7 +37,7 @@ def battery_charging():
 
 
 def is_charging():
-    ischbatt=1
+    ischbatt = 1
     if data.send_charge_touch() == 1 and ischbatt == 1:
         ba = open('log.txt', "a")
         ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Connected and charging\n")
@@ -56,7 +58,6 @@ def is_charging():
         ba.write(time.strftime("%m/%d/%Y;%H:%M:%S:...") + "Not Charging\n")
         ba.close()
         return 4
-
 
 
 if __name__ == '__main__':

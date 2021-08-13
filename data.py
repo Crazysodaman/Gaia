@@ -2,6 +2,7 @@ import time
 import GaiaB
 import serial
 import Gaialogic as glog
+
 cbatt = 0  # 1
 mbatt = 0  # 2
 ACCx = 0
@@ -15,11 +16,13 @@ MAGy = 0
 MAGz = 0
 kalmanY = 0
 kalmanX = 0
-tiltCompensatedHeading= 0
-ischbatt=0
-touchcharge=1
-needscharging=0
-## ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
+tiltCompensatedHeading = 0
+ischbatt = 0
+touchcharge = 1
+needscharging = 0
+
+
+# ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
 def send_cbatt():
     return cbatt
 
@@ -27,12 +30,12 @@ def send_cbatt():
 def change_cbatt(data):
     global cbatt
     cbatt = data
-    if cbatt %5 ==0:
+    if cbatt % 5 == 0:
         ba = open('BatteryLogger.txt', "a")
-        ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ")+ "Computer Battery ")
-        ba.writelines(str(cbatt)+" %\n")
+        ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Computer Battery ")
+        ba.writelines(str(cbatt) + " %\n")
         ba.close()
-    elif cbatt <10:
+    elif cbatt < 10:
         GaiaB.low_battery(1)
 
 
@@ -43,16 +46,16 @@ def send_mbatt():
 def change_mbatt(data):
     global mbatt
     mbatt = data
-    if mbatt %5 ==0:
+    if mbatt % 5 == 0:
         ba = open('BatteryLogger.txt', "a")
-        ba.write(time.strftime("%m/%d/%Y %H:%M:%S:")+ "Motor Battery ")
-        ba.writelines(str(mbatt)+" %\n")
+        ba.write(time.strftime("%m/%d/%Y %H:%M:%S:") + "Motor Battery ")
+        ba.writelines(str(mbatt) + " %\n")
         ba.close()
-    elif mbatt <10:
+    elif mbatt < 10:
         GaiaB.low_battery(2)
 
 
-def change_battery(data1,data2):
+def change_battery(data1, data2):
     """
     :param data1: CBatt
     :param data2: MBatt
@@ -62,21 +65,21 @@ def change_battery(data1,data2):
     cbatt = data1
     mbatt = data2
     ba = open('BatteryLogger.txt', "a")
-    if cbatt %5 ==0 and mbatt %5==0:
-        ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ")+ "Computer Battery ")
-        ba.writelines(str(cbatt)+" %\n")
+    if cbatt % 5 == 0 and mbatt % 5 == 0:
+        ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Computer Battery ")
+        ba.writelines(str(cbatt) + " %\n")
         ba.write(time.strftime("%m/%d/%Y %H:%M:%S:") + "Motor Battery ")
         ba.writelines(str(mbatt) + " %\n")
         ba.close()
-    elif cbatt %5 ==0:
-        ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ")+ "Computer Battery ")
-        ba.writelines(str(cbatt)+" %\n")
+    elif cbatt % 5 == 0:
+        ba.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Computer Battery ")
+        ba.writelines(str(cbatt) + " %\n")
         ba.close()
-    elif mbatt %5 ==0:
-        ba.write(time.strftime("%m/%d/%Y %H:%M:%S:")+ "Motor Battery ")
-        ba.writelines(str(mbatt)+" %\n")
+    elif mbatt % 5 == 0:
+        ba.write(time.strftime("%m/%d/%Y %H:%M:%S:") + "Motor Battery ")
+        ba.writelines(str(mbatt) + " %\n")
         ba.close()
-    if cbatt <10 or mbatt <10:
+    if cbatt < 10 or mbatt < 10:
         glog.low_battery()
 
 
@@ -86,17 +89,17 @@ def send_charge_touch():
 
 def ACCx_change(data):
     global ACCx
-    ACCx=data
+    ACCx = data
 
 
 def ACCy_change(data):
     global ACCy
-    ACCy=data
+    ACCy = data
 
 
 def ACCz_change(data):
     global ACCz
-    ACCz=data
+    ACCz = data
 
 
 def GYRx_change(data):
@@ -137,6 +140,7 @@ def kalmanY_change(data):
 def kalmanX_change(data):
     global kalmanX
     kalmanX = data
+
 
 def tiltCompensatedHeading_change(data):
     global tiltCompensatedHeading
@@ -186,6 +190,7 @@ def kalmanY_send():
 def kalmanX_send():
     return kalmanX
 
+
 def tiltCompensatedHeading_send():
     return tiltCompensatedHeading
 
@@ -223,29 +228,28 @@ def sendservopos(servo: tuple):
 
     Exp: A= 1,2,3,4,5
     """
-    #byt=len (servo)
+    # byt=len (servo)
     command = " "
     for serv in servo:
         command += "QP" + str(serv) + " "
     command += "\r"
     with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
-        ssc.write (command.encode())
+        ssc.write(command.encode())
         time.sleep(0.01)
-        re=ssc.readall()
-        rea=[]
+        re = ssc.readall()
+        rea = []
         for letter in re:
-            rea.append(letter *10)
-        rea=tuple(rea)
+            rea.append(letter * 10)
+        rea = tuple(rea)
         return rea
 
 
 def allbullshit():
-    return ACCx,ACCy,ACCz,GYRx,GYRy,GYRz,MAGx,MAGy,MAGz,kalmanY,kalmanX,tiltCompensatedHeading
+    return ACCx, ACCy, ACCz, GYRx, GYRy, GYRz, MAGx, MAGy, MAGz, kalmanY, kalmanX, tiltCompensatedHeading
 
 
 if __name__ == '__main__':
-    
-    servomove(500,(3,500),(15,750),(6,1500))
-    A= (15,3,6)
-    
-    print (sendservopos(A))
+    servomove(500, (3, 500), (15, 750), (6, 1500))
+    A = (15, 3, 6)
+
+    print(sendservopos(A))
