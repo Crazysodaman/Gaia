@@ -522,3 +522,19 @@
 08/11/2021 18:27:44: Starting Up Gaia in mode: OS start 
 08/11/2021 18:28:40: Starting Up Gaia in mode: OS start 
 08/11/2021 18:29:08: Starting Up Gaia in mode: OS start 
+08/13/2021 15:43:40: Starting Up Gaia in mode: Safe
+08/13/2021 15:44:33: Starting Up Gaia in mode: Safe
+08/13/2021 15:48:34: Starting Up Gaia in mode: Safe
+08/13/2021 15:49:15: Starting Up Gaia in mode: Safe
+08/13/2021 15:56:36: Starting Up Gaia in mode: Safe
+08/13/2021 16:07:04: Starting Up Gaia in mode: Safe
+08/13/2021 16:17:08: Starting Up Gaia in mode: Safe
+08/13/2021 16:18:27: Starting Up Gaia in mode: Safe
+08/13/2021 16:18:55: Starting Up Gaia in mode: Safe
+08/13/2021 16:19:17: Starting Up Gaia in mode: Safe
+08/13/2021 16:19:35: Starting Up Gaia in mode: Safe
+08/13/2021 16:23:20: Starting Up Gaia in mode: Safe
+08/13/2021 16:27:05: Starting Up Gaia in mode: Safe
+08/13/2021 16:37:08: Starting Up Gaia in mode: Safe
+08/13/2021 16:37:22: Starting Up Gaia in mode: Safe
+08/13/2021 16:38:38: Starting Up Gaia in mode: Safe

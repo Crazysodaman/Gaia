@@ -2,6 +2,7 @@ from apa102_pi.driver import apa102
 from apa102_pi.colorschemes import colorschemes
 import RPi.GPIO as GPIO
 import threading as th
+import time
 import Mainstart as ms
 
 erleds = 0
@@ -44,17 +45,18 @@ def set_Critical_Error_pixels(brightness=20):  # for color it is Hex and 0x to t
 
 
 def critical_error_blink():
-    while erleds_send == 1:
+    while erleds_send() == 1:
         set_Critical_Error_pixels()
         strip.show()
-        time.sleep(0.4)
+        time.sleep(0.25)
         strip.clear_strip()
-        time.sleep(0.4)
+        time.sleep(0.25)
+        erleds_send()
     strip.clear_strip()
 
 
 def error_leds():
-    t1 = th.Thread(target=critical_error_blink())  #
+    t1 = th.Thread(target=led.critical_error_blink())  #
     t1.start()
     t1.join()
 
@@ -79,5 +81,8 @@ if __name__ == '__main__':
     strip.clear_strip()
     time.sleep(1)
     set_pixels(0x0F000F, 20)
+    strip.show()
     time.sleep(1)
+
     strip.clear_strip()
+    error_leds()
