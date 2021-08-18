@@ -1,6 +1,7 @@
 import time
 import GaiaB
 import serial
+import temp as tmp
 import Gaialogic as glog
 
 cbatt = 0  # 1
@@ -20,7 +21,8 @@ tiltCompensatedHeading = 0
 ischbatt = 0
 touchcharge = 1
 needscharging = 0
-
+temp = 0
+pres=0
 
 # ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
 def send_cbatt():
@@ -193,6 +195,24 @@ def kalmanX_send():
 
 def tiltCompensatedHeading_send():
     return tiltCompensatedHeading
+
+
+def tempchange():
+    global temp
+    temp = tmp.compensate_temperature()
+
+
+def tempsend():
+    return temp
+
+
+def preschange():
+    global pres
+    pres = tmp.compensate_pressure()
+
+
+def pressend():
+    return pres
 
 
 def servomove(ms: int, *args: tuple) -> None:
