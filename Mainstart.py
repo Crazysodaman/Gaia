@@ -35,12 +35,6 @@ def Main():
     # t3.join()
 
 
-def error_leds():
-    t1 = th.Thread(target=led.critical_error_blink())  #
-    t1.start()
-    t1.join()
-
-
 if __name__ == '__main__':
     led.strip.clear_strip()
     time.sleep(0.01)

@@ -56,7 +56,7 @@ def critical_error_blink():
 
 
 def error_leds():
-    t1 = th.Thread(target=led.critical_error_blink())  #
+    t1 = th.Thread(target=critical_error_blink())  #
     t1.start()
     t1.join()
 
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     set_pixels(0x0F000F, 20)
     strip.show()
     time.sleep(1)
-
     strip.clear_strip()
+    time.sleep(1)
     error_leds()

@@ -25,6 +25,8 @@ temp = 0
 pres=0
 
 # ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
+
+
 def send_cbatt():
     return cbatt
 

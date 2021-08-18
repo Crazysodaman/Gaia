@@ -1,6 +1,7 @@
 import time
 import Gaialogic as glog
 import data
+import tensorflow as tefl
 
 needscharging = 0
 
