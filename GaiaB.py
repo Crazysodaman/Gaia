@@ -3,6 +3,7 @@ import Gaialogic as glog
 import data
 import tensorflow as tefl
 
+pos = 1500
 needscharging = 0
 
 
@@ -59,6 +60,36 @@ def is_charging():
         ba.write(time.strftime("%m/%d/%Y;%H:%M:%S:...") + "Not Charging\n")
         ba.close()
         return 4
+
+
+def legandpos(leg, posa):
+    global pos
+    pos = posa
+    """
+    servo and numbers
+    FRR-8   FLR-24
+    FRT-7   FLT-23
+    FRFT-6  FLFT-22
+    CRR-5   CLR-21
+    CRT-4   CLT-20
+    CRFT-3  CLFT-19
+    BRR-2   BLR-18
+    BRT-1   BLT-17
+    BRFT-0  BLFT-16
+
+    leg groups
+    A (8,7,6),(21,20,19),(2,1,0)
+    B (24,23,22),(5,4,3),(18,17,16)
+
+    Exp: A= 1,2,3,4,5
+    """
+    if pos >= 2200 or pos <= 700:
+        if pos >= 2200:
+            pos = 2000
+        elif pos <= 740:
+            pos = 750
+
+    return
 
 
 if __name__ == '__main__':
