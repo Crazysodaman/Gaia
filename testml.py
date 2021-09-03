@@ -29,7 +29,7 @@ blt = (17,)
 blft = (16,)
 
 
-class Move:
+class Move():
     """
        servo and numbers
        FRR-8   FLR-24
@@ -51,10 +51,7 @@ class Move:
         self.ms = ms
 
     def stand(self):
-        x1 = len(aspr)
-        x2 = len(aspl)
-        sspr = ssc.sendservopos(aspr)
-        sspl = ssc.sendservopos(aspl)
+
         ssc.servomove(self.ms,)
         ssc.servomove(self.ms,)
 
@@ -72,3 +69,5 @@ class Move:
 
     def right(self):
         pass
+
+ssc.servomove(1, ()

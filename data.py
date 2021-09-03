@@ -222,18 +222,22 @@ class SSC32:
     def __init__(self):
         pass
 
-    def servomove(self, ms: int, *args: tuple) -> None:
+    def servomove(self, ms: int, servo: list, pos: list) -> None:
         """
-        Exmple: leg(100,(1,1500),(2,1500),(3,1500))
+        Exmple: leg(100, Servos, Positions (750-2500))
         :param ms: Time it has to move
         :param args: (# (servo), P(position))
         """
+        if len(servo) != len(pos):
+            raise
+
         command: str = ""
-        for servo in args:
-            command += f"#{servo[0]} P{servo[1]} "
+        for long in zip(servo,pos):
+            command += f"#{long[0]} P{long[1]} "
         command += f"T{ms} \r"
-        with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
-            ssc.write(command.encode())
+        print(command)
+        #with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
+            #ssc.write(command.encode())
 
     def sendservopos(self,servo: tuple):
         """
