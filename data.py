@@ -1,8 +1,8 @@
 import time
-import GaiaB
 import serial
-import temp as tmp
+import GaiaB
 import Gaialogic as glog
+import temp as tmp
 
 cbatt = 0  # 1
 mbatt = 0  # 2
@@ -217,53 +217,57 @@ def pressend():
     return pres
 
 
-def servomove(ms: int, *args: tuple) -> None:
-    """
-    Exmple: leg(100,(1,1500),(2,1500),(3,1500))
-    :param ms: Time it has to move
-    :param args: (# (servo), P(position))
-    """
-    command: str = ""
-    for servo in args:
-        command += f"#{servo[0]} P{servo[1]} "
-    command += f"T{ms} \r"
-    with serial.Serial("/dev/ttyUSB0", 115200, timeout=0) as ssc:
-        ssc.write(command.encode())
+class SSC32:
 
+    def __init__(self):
+        pass
 
-def sendservopos(servo: tuple):
-    """
-    servo and numbers
-    FRR-8   FLR-24
-    FRT-7   FLT-23
-    FRFT-6  FLFT-22
-    CRR-5   CLR-21
-    CRT-4   CLT-20
-    CRFT-3  CLFT-19
-    BRR-2   BLR-18
-    BRT-1   BLT-17
-    BRFT-0  BLFT-16
+    def servomove(self, ms: int, *args: tuple) -> None:
+        """
+        Exmple: leg(100,(1,1500),(2,1500),(3,1500))
+        :param ms: Time it has to move
+        :param args: (# (servo), P(position))
+        """
+        command: str = ""
+        for servo in args:
+            command += f"#{servo[0]} P{servo[1]} "
+        command += f"T{ms} \r"
+        with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
+            ssc.write(command.encode())
 
-    leg groups
-    A (8,7,6),(21,20,19),(2,1,0)
-    B (24,23,22),(5,4,3),(18,17,16)
+    def sendservopos(self,servo: tuple):
+        """
+        servo and numbers
+        FRR-8   FLR-24
+        FRT-7   FLT-23
+        FRFT-6  FLFT-22
+        CRR-5   CLR-21
+        CRT-4   CLT-20
+        CRFT-3  CLFT-19
+        BRR-2   BLR-18
+        BRT-1   BLT-17
+        BRFT-0  BLFT-16
 
-    Exp: A= 1,2,3,4,5
-    """
-    # byt=len (servo)
-    command = " "
-    for serv in servo:
-        command += "QP" + str(serv) + " "
-    command += "\r"
-    with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
-        ssc.write(command.encode())
-        time.sleep(0.01)
-        re = ssc.readall()
-        rea = []
-        for letter in re:
-            rea.append(letter * 10)
-        rea = tuple(rea)
-        return rea
+        leg groups
+        A (8,7,6),(21,20,19),(2,1,0)
+        B (24,23,22),(5,4,3),(18,17,16)
+
+        Exp: A= 1,2,3,4,5
+        """
+        # byt=len (servo)
+        command = " "
+        for serv in servo:
+            command += "QP" + str(serv) + " "
+        command += "\r"
+        with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
+            ssc.write(command.encode())
+            time.sleep(0.01)
+            re = ssc.readall()
+            rea = []
+            for letter in re:
+                rea.append(letter * 10)
+            rea = tuple(rea)
+            return rea
 
 
 def allbullshit():
