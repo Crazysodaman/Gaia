@@ -1,4 +1,5 @@
 import time
+import exceptions
 import serial
 import GaiaB
 import Gaialogic as glog
@@ -22,7 +23,8 @@ ischbatt = 0
 touchcharge = 1
 needscharging = 0
 temp = 0
-pres=0
+pres = 0
+
 
 # ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
 
@@ -229,17 +231,17 @@ class SSC32:
         :param args: (# (servo), P(position))
         """
         if len(servo) != len(pos):
-            raise
+            raise exceptions.ServoAndPosition
 
         command: str = ""
-        for long in zip(servo,pos):
+        for long in zip(servo, pos):
             command += f"#{long[0]} P{long[1]} "
         command += f"T{ms} \r"
-        print(command)
-        #with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
-            #ssc.write(command.encode())
+        # print(command)
+        with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
+            ssc.write(command.encode())
 
-    def sendservopos(self,servo: tuple):
+    def sendservopos(self, servo: list):
         """
         servo and numbers
         FRR-8   FLR-24
@@ -258,7 +260,6 @@ class SSC32:
 
         Exp: A= 1,2,3,4,5
         """
-        # byt=len (servo)
         command = " "
         for serv in servo:
             command += "QP" + str(serv) + " "
