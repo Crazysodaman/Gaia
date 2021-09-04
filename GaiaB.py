@@ -1,7 +1,6 @@
 import time
 import Gaialogic as glog
 import data
-import tensorflow as tefl
 
 pos = 1500
 needscharging = 0
