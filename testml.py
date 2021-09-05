@@ -1,6 +1,8 @@
 import data
 import random
 import time
+
+
 class Move:
     """
        servo and numbers
@@ -146,8 +148,8 @@ class Move:
         aspl2 = self.servofilter(self.aspr, aspl1, 1500)
         aspr3 = self.posmaker(aspr2, 1500)
         aspl3 = self.posmaker(aspl2, 1500)
-        ssc.servomove(ms, aspr2, aspr3)
-        ssc.servomove(ms, aspl2, aspl3)
+        self.ssc.servomove(ms, aspr2, aspr3)
+        self.ssc.servomove(ms, aspl2, aspl3)
 
     def forward(self, ch, Tt):
         """
@@ -157,12 +159,12 @@ class Move:
         """
         ms = self.randomspeed(ch)
         self.stand(ch)
-        gat1 = self.posmaker(self.gat, 1500) # legs default A
-        gat2 = self.posmakera(self.gat, 1250, 1750) # up A
-        gar1 = self.posmaker(self.gar, 1500) # legs default A
-        gar2 = self.posmakera(self.gar, 900, 2100) # move A
-        gbt1 = self.posmaker(self.gbt, 1500) # legs default B
-        gbt2 = self.posmakera(self.gbt, 1750, 1250) # up B
+        gat1 = self.posmaker(self.gat, 1500)  # legs default A
+        gat2 = self.posmakera(self.gat, 1250, 1750)  # up A
+        gar1 = self.posmaker(self.gar, 1500)  # legs default A
+        gar2 = self.posmakera(self.gar, 900, 2100)  # move A
+        gbt1 = self.posmaker(self.gbt, 1500)  # legs default B
+        gbt2 = self.posmakera(self.gbt, 1750, 1250)  # up B
         gbr1 = self.posmaker(self.gbr, 1500)  # legs default B
         gbr2 = self.posmakera(self.gbr, 2100, 900)  # move B
 
@@ -170,16 +172,16 @@ class Move:
         while time.time() < t_end:
             self.ssc.servomove(ms, self.gat, gat2)
             while self.ssc.sendservopos(self.gat) != gat2:
-                continue # up A
+                continue  # up A
             self.ssc.servomove(ms, self.gar, gar2)
             while self.ssc.sendservopos(self.gar) != gar2:
-                continue # Move A
+                continue  # Move A
             self.ssc.servomove(ms, self.gat, gat1)
             while self.ssc.sendservopos(self.gat) != gat1:
-                continue # Down A
+                continue  # Down A
             self.ssc.servomove(ms, self.gbt, gbt2)
             while self.ssc.sendservopos(self.gbt) != gbt2:
-                continue # up B
+                continue  # up B
             self.ssc.servomove(ms, self.gar, gar1)
             while self.ssc.sendservopos(self.gar) != gar1:
                 continue  # Move A
@@ -196,7 +198,7 @@ class Move:
             while self.ssc.sendservopos(self.gbr) != gbr1:
                 continue  # Move B
         self.stand(ch)
-        
+
     def backward(self):
         self.stand()
         pass
