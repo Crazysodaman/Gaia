@@ -1,4 +1,5 @@
 import time
+import random
 import Gaialogic as glog
 import data
 

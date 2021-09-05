@@ -150,6 +150,3 @@ def servotest():
     ssc.write("#24 P500 #5 P500 #18 P500 T2500 \r".encode())
     time.sleep(0.2)
     ssc.close
-
-
-leg()
