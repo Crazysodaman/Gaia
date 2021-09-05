@@ -3,7 +3,7 @@ import exceptions
 import serial
 import GaiaB
 import Gaialogic as glog
-#import temp as tmp
+import temp as tmp
 
 cbatt = 0  # 1
 mbatt = 0  # 2

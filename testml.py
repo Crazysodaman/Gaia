@@ -1,5 +1,6 @@
-#import data
+import data
 import random
+
 ssc = data.SSC32()
 aspr = [0, 1, 2, 3, 4, 5, 6, 7, 8]  # all servo positions right
 aspl = [16, 17, 18, 19, 20, 21, 22, 23, 24]  # all servo positions left
@@ -29,7 +30,7 @@ blt = [17]
 blft = [16]
 
 
-class Move:
+class Move():
     """
        servo and numbers
        FRR-8   FLR-24
@@ -47,24 +48,43 @@ class Move:
        B (24,23,22),(5,4,3),(18,17,16)
        """
 
-    def __init__(self):
+    def __init__(self, *args):
+
         pass
+
+    def setspeed(self, ch):
+        """
+        :param ch: 1:Fast 2:FMid 3:Mid 4:SMid 5:Slow
+        :return: set speed
+        """
+        if ch == 1:  # Fast
+            return 100
+        if ch == 2:  # FMid
+            return 250
+        if ch == 3:  # Mid
+            return 500
+        if ch == 4:  # SMid
+            return 750
+        if ch == 5:  # Slow
+            return 1000
 
     def randomspeed(self, ch):
         """
-        :param ch: 1:Any 2:Fast 3:Mid 4:Slow
-        :return: speed
+        :param ch: 1:Any 2:Fast 3:FMid 4:SMid 5:Slow
+        :return: Random speed
         """
-        if ch == 1: #full range
-            return random.randrange(500,1500)
-        if ch == 2: # Fast
-            return random.randrange(500,750)
-        if ch == 3: # Mid
-            return random.randrange(750,1000)
-        if ch== 4: #Slow
-            return random.randrange(1000,1500)
+        if ch == 1:  # full range
+            return random.randrange(100, 1000, 10)
+        if ch == 2:  # Fast
+            return random.randrange(100, 250, 10)
+        if ch == 3:  # FMid
+            return random.randrange(250, 500, 10)
+        if ch == 4:  # SMid
+            return random.randrange(500, 750, 10)
+        if ch == 5:  # Slow
+            return random.randrange(750, 1000, 10)
 
-    def servofilter(servo, pos, xpwm, ch=1):
+    def servofilter(self,servo, pos, xpwm, ch=1):
         """
         :param servo: what servos
         :param pos: what position
@@ -87,16 +107,16 @@ class Move:
         if ch == 3:
             return srvoapwn
 
-    def posmaker(servo, pos):
+    def posmaker(self, servo, pos):
         pwm = []
         for i in range(len(servo)):
             pwm.append(pos)
         return pwm
 
-    def posmakera(servo, posa,posb):
+    def posmakera(self, servo, posa, posb):
         pwm = []
         for i[1] in range(len(servo)):
-            pwm.append(posa,posb)
+            pwm.append(posa, posb)
         return pwm
 
     def stand(self, ch):
@@ -104,7 +124,7 @@ class Move:
         :param ch: 1:Any 2:Fast 3:Mid 4:Slow
         :return: speed
         """
-        ms= self.randomspeed(ch)
+        ms = self.randomspeed(ch)
         aspr1 = ssc.sendservopos(aspr)
         aspl1 = ssc.sendservopos(aspl)
         aspr2 = self.servofilter(aspr, aspr1, 1500)
@@ -119,13 +139,13 @@ class Move:
         :param ch: 1:Any 2:Fast 3:Mid 4:Slow
         :return: speed
         """
-        ms=self.randomspeed(ch)
+        ms = self.randomspeed(ch)
         self.stand(ch)
 
         brrpos = self.posmaker(brr, 2000)
         ssc.servomove(ms, brr, brrpos)
         while ssc.sendservopos(brr) != brrpos:
-             continue
+            continue
         brrpos = self.posmaker(brr, 1000)
         ssc.servomove(ms, brr, brrpos)
         while ssc.sendservopos(brr) != brrpos:
