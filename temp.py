@@ -78,11 +78,11 @@ class BMP388(object):
         result = self._read_byte(cmd)
     if result > 128:
         result -= 256
-            return result
+        return result
     def _read_u16(self, cmd):
         LSB = self._bus.read_byte_data(self._address, cmd)
         MSB = self._bus.read_byte_data(self._address, cmd + 0x01)
-    return (MSB << 0x08) + LSB
+        return (MSB << 0x08) + LSB
     def _read_s16(self, cmd):
         result = self._read_u16(cmd)
     if result > 32767:
