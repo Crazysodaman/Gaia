@@ -1,4 +1,4 @@
-import data
+#import data
 import random
 ssc = data.SSC32()
 aspr = [0, 1, 2, 3, 4, 5, 6, 7, 8]  # all servo positions right
@@ -91,7 +91,7 @@ class Move:
         pwm = []
         for i in range(len(servo)):
             pwm.append(pos)
-            return pwm
+        return pwm
 
     def posmakera(servo, posa,posb):
         pwm = []
@@ -142,8 +142,3 @@ class Move:
     def right(self):
         self.stand()
         pass
-
-
-d = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-c = [9,8,7,6,5,4,3,2,1]
-print(Move.posmaker(aspl,d))
