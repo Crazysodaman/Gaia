@@ -148,7 +148,6 @@ class Move:
         srvo = self.ssc.sendservopos(servo)
         return self.servofilter(servo, srvo, posm)
 
-
     def stand(self, ch):
         """
         :param ch: 1:Any 2:Fast 3:Mid 4:Slow
@@ -163,7 +162,6 @@ class Move:
         aspl3 = self.posmaker(aspl2, 1500)
         self.ssc.servomove(ms, aspr2, aspr3)
         self.ssc.servomove(ms, aspl2, aspl3)
-
 
     def forward(self, ch, Tt):
         """
@@ -215,23 +213,21 @@ class Move:
                 break  # Move B
         self.stand(ch)
 
-
     def backward(self):
         self.stand()
         pass
-
 
     def left(self):
         self.stand()
         pass
 
-
     def right(self):
         self.stand()
 
-mve=Move()
+
+mve = Move()
 
 gar = [2, 21, 8]
-hia=1250
-hib= 1750
-print(mve.testservos(gar, hia,hib))
+hia = 1250
+hib = 1750
+print(mve.testservos(gar, hia, hib))
