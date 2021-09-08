@@ -3,7 +3,7 @@ import exceptions
 import serial
 import GaiaB
 import Gaialogic as glog
-import temp as tmp
+#import temp as tmp
 
 cbatt = 0  # 1
 mbatt = 0  # 2
@@ -223,6 +223,13 @@ class SSC32:
 
     def __init__(self):
         pass
+
+    def testmove(self, ms: int, servo, pos):
+        command: str = ""
+        command += f"#{servo} P{pos} "
+        command += f"T{ms} \r"
+        with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
+            ssc.write(command.encode())
 
     def servomove(self, ms: int, servo: list, pos: list) -> None:
         """

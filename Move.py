@@ -136,6 +136,19 @@ class Move:
                 pwm.append(posb)
         return pwm
 
+    def testoneservo(self, servo, pos=1500, ms=500):
+        self.ssc.testmove(ms, servo, pos)
+        while self.ssc.sendservopos(servo) != pos:
+            break
+
+    def testservos(self, servo, posa, posb, ms=500):
+        posm = self.posmakera(servo, posa, posb)
+        self.ssc.servomove(ms, servo, posm)
+        time.sleep(2)
+        srvo = self.ssc.sendservopos(servo)
+        return self.servofilter(servo, srvo, posm)
+
+
     def stand(self, ch):
         """
         :param ch: 1:Any 2:Fast 3:Mid 4:Slow
@@ -145,11 +158,12 @@ class Move:
         aspr1 = self.ssc.sendservopos(self.aspr)
         aspl1 = self.ssc.sendservopos(self.aspl)
         aspr2 = self.servofilter(self.aspr, aspr1, 1500)
-        aspl2 = self.servofilter(self.aspr, aspl1, 1500)
+        aspl2 = self.servofilter(self.aspl, aspl1, 1500)
         aspr3 = self.posmaker(aspr2, 1500)
         aspl3 = self.posmaker(aspl2, 1500)
         self.ssc.servomove(ms, aspr2, aspr3)
         self.ssc.servomove(ms, aspl2, aspl3)
+
 
     def forward(self, ch, Tt):
         """
@@ -159,6 +173,7 @@ class Move:
         """
         ms = self.randomspeed(ch)
         self.stand(ch)
+        time.sleep(0.2)
         gat1 = self.posmaker(self.gat, 1500)  # legs default A
         gat2 = self.posmakera(self.gat, 1250, 1750)  # up A
         gar1 = self.posmaker(self.gar, 1500)  # legs default A
@@ -172,41 +187,51 @@ class Move:
         while time.time() < t_end:
             self.ssc.servomove(ms, self.gat, gat2)
             while self.ssc.sendservopos(self.gat) != gat2:
-                continue  # up A
+                print(self.ssc.sendservopos(self.gat))
+                break  # up A
             self.ssc.servomove(ms, self.gar, gar2)
             while self.ssc.sendservopos(self.gar) != gar2:
-                continue  # Move A
+                break  # Move A
             self.ssc.servomove(ms, self.gat, gat1)
             while self.ssc.sendservopos(self.gat) != gat1:
-                continue  # Down A
+                break  # Down A
             self.ssc.servomove(ms, self.gbt, gbt2)
             while self.ssc.sendservopos(self.gbt) != gbt2:
-                continue  # up B
+                break  # up B
             self.ssc.servomove(ms, self.gar, gar1)
             while self.ssc.sendservopos(self.gar) != gar1:
-                continue  # Move A
+                break  # Move A
             self.ssc.servomove(ms, self.gbr, gbr2)
             while self.ssc.sendservopos(self.gbr) != gbr2:
-                continue  # Move B
+                break  # Move B
             self.ssc.servomove(ms, self.gbt, gbt1)
             while self.ssc.sendservopos(self.gbt) != gbt1:
-                continue  # Down B
+                break  # Down B
             self.ssc.servomove(ms, self.gat, gat2)
             while self.ssc.sendservopos(self.gat) != gat2:
-                continue  # up A
+                break  # up A
             self.ssc.servomove(ms, self.gbr, gbr1)
             while self.ssc.sendservopos(self.gbr) != gbr1:
-                continue  # Move B
+                break  # Move B
         self.stand(ch)
+
 
     def backward(self):
         self.stand()
         pass
 
+
     def left(self):
         self.stand()
         pass
 
+
     def right(self):
         self.stand()
-        pass
+
+mve=Move()
+
+gar = [2, 21, 8]
+hia=1250
+hib= 1750
+print(mve.testservos(gar, hia,hib))
