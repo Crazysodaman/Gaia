@@ -110,6 +110,13 @@ class Move:
         if ch == 3:
             return srvoapwn
 
+    def servolistfilter(self, servo, pos, xpwm):
+        out = []
+        for current_pos, desired_pos, servo in zip(pos, xpwm, servo):
+            if current_pos != desired_pos:
+                out.append(servo)
+        return out
+
     def posmaker(self, servo, pos):
         """
         :param servo: any
@@ -146,7 +153,7 @@ class Move:
         self.ssc.servomove(ms, servo, posm)
         time.sleep(2)
         srvo = self.ssc.sendservopos(servo)
-        return self.servofilter(servo, srvo, posm)
+        return self.servolistfilter(servo, srvo, posm)
 
     def stand(self, ch):
         """
@@ -182,10 +189,9 @@ class Move:
         gbr2 = self.posmakera(self.gbr, 2100, 900)  # move B
 
         t_end = time.time() + Tt
-        while time.time() < t_end:
+        while time.time() < t_end and sensorsonor >= 3:
             self.ssc.servomove(ms, self.gat, gat2)
             while self.ssc.sendservopos(self.gat) != gat2:
-                print(self.ssc.sendservopos(self.gat))
                 break  # up A
             self.ssc.servomove(ms, self.gar, gar2)
             while self.ssc.sendservopos(self.gar) != gar2:
@@ -213,21 +219,18 @@ class Move:
                 break  # Move B
         self.stand(ch)
 
-    def backward(self):
-        self.stand()
+    def backward(self, ch):
+        self.stand(ch)
         pass
 
-    def left(self):
-        self.stand()
+    def left(self,ch):
+        self.stand(ch)
         pass
 
-    def right(self):
-        self.stand()
+    def right(self,ch):
+        self.stand(ch)
 
 
 mve = Move()
 
-gar = [2, 21, 8]
-hia = 1250
-hib = 1750
-print(mve.testservos(gar, hia, hib))
+

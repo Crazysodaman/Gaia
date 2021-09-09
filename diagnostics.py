@@ -76,10 +76,26 @@ def servo_test():
     if servotest_send() == 1:
         with open('diagnostics.txt', "a") as da:
             da.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Servo Test Start \n")
+            da.write("Servos that did not go to position:")
             time.sleep(1)
-            da.write (mve.testservos(mve.gbf, hia,hib))
+            da.write(mve.testservos(mve.gbf, hia,hib) + ", ")
             time.sleep(1)
-
+            mve.stand(1)
+            da.write(mve.testservos(mve.gaf, hib, hia) + ", ")
+            time.sleep(1)
+            mve.stand(1)
+            time.sleep(1)
+            da.write(mve.testservos(mve.gbt, hia, hib) + ", ")
+            time.sleep(1)
+            da.write(mve.testservos(mve.gbr, hia, hib) + ", ")
+            time.sleep(1)
+            mve.stand(1)
+            time.sleep(1)
+            da.write(mve.testservos(mve.gat, hib, hia) + ", ")
+            time.sleep(1)
+            da.write(mve.testservos(mve.gar, hib, hia) + "...")
+            time.sleep(1)
+            mve.stand(1)
             da.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Servo Test End \n")
 
 
