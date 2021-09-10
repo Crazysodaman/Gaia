@@ -4,18 +4,16 @@ from subprocess import call
 import threading as th
 import led
 
-EM = 2
+EM = 0
 
 
-def EM_change(data):
+def EM_read(data):
     global EM
-    EM = data
-    EM = EM.strip('')
+    EM = int(data.strip(''))
 
 
 def EM_show():
     return EM
-
 
 # TODO Build a file checker for the EM varable
 

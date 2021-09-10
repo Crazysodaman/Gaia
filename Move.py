@@ -1,9 +1,10 @@
 import data
 import random
 import time
+from GaiaB import Singleton
 
 
-class Move:
+class Move(Singleton):
     """
        servo and numbers
        FRR-8   FLR-24
@@ -105,9 +106,9 @@ class Move:
             srvoapwn.append(i)
         if ch == 1:
             return srvo
-        if ch == 2:
+        elif ch == 2:
             return pwm
-        if ch == 3:
+        elif ch == 3:
             return srvoapwn
 
     def servolistfilter(self, servo, pos, xpwm):
