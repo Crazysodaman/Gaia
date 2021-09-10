@@ -5,36 +5,50 @@ from GaiaB import Singleton
 class Emotions(Singleton):
 
     def __init__(self):
-        self.rmmhs = 50  # happy sad index (50 is neutral)
-        self.rmmcm = 50  # calm mad index (50 is neutral)
-        self.rmmgm = 50  # good mischief index (50 in neutral)
+        self.mhs = 50  # happy sad index (50 is neutral)
+        self.mcm = 50  # calm mad index (50 is neutral)
+        self.mgm = 50  # good mischief index (50 in neutral)
+
+    def setneutral(self):
+        self.mgm = 50
+        self.mcm = 50
+        self.mhs = 50
+
+    def readhappysad(self):
+        return self.mhs
+
+    def readcalmmad(self):
+        return self.mcm
+
+    def readrgoodmischief(self):
+        return self.mgm
 
     def randommoodhappysad(self):
-        self.rmmhs = random.randrange(0, 100, 5)
-        return self.rmmhs
+        self.mhs = random.randrange(0, 100, 5)
+        return self.mhs
 
     def randommoodcalmmad(self):
-        self.rmmcm = random.randrange(0, 100, 5)
-        return self.rmmcm
+        self.mcm = random.randrange(0, 100, 5)
+        return self.mcm
 
     def randommoodgoodmischief(self):
-        self.rmmgm = random.randrange(0, 100, 5)
-        return self.rmmgm
+        self.mgm = random.randrange(0, 100, 5)
+        return self.mgm
 
 
 class HappySad(Emotions):
 
     def __init__(self):
-        pass
+        super(HappySad, self).__init__()
 
 
 class CalmMad(Emotions):
 
     def __init__(self):
-        pass
+        super(CalmMad, self).__init__()
 
 
 class GoodMischief(Emotions):
 
     def __init__(self):
-        pass
+        super(GoodMischief, self).__init__()

@@ -5,8 +5,10 @@ import Gaialogic as glog
 import data
 import Move
 import led
+import Emotions
 
-mve = Move.Move
+mve = Move.Move()
+emot = Emotions.Emotions()
 
 
 class Singleton(object):
@@ -72,9 +74,6 @@ class DailyRoutine(Singleton):
         self.dbr = 13  # Day LED Brightness
         self.nbr = 5  # Night LED Brightness
         self.ledcolor = 0x0F000F  # LED Color
-        self.mrs = 3  # Morning Speed
-        self.drs = 2  # Day Speed
-        self.nrs = 4  # Night Speed
 
 
 class MorningRoutine(DailyRoutine):
@@ -111,7 +110,7 @@ class DayRoutine(DailyRoutine):
 
 class NightRoutine(DailyRoutine):
 
-    def __int__(self):
+    def __init__(self):
         super(NightRoutine, self).__init__()
 
     def __enter__(self):
@@ -131,6 +130,10 @@ class RunRoutine(Singleton):
         self.mr = MorningRoutine()
         self.dr = DayRoutine()
         self.nr = NightRoutine()
+        self.mrs = 3  # Morning Speed
+        self.drs = 2  # Day Speed
+        self.nrs = 4  # Night Speed
+        self.nmood = emot.setneutral()
 
     def gettimeofday(self, ch=1):
         ltime = time.localtime()
