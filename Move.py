@@ -189,7 +189,7 @@ class Move:
         gbr2 = self.posmakera(self.gbr, 2100, 900)  # move B
 
         t_end = time.time() + Tt
-        while time.time() < t_end and sensorsonor >= 3:
+        while time.time() < t_end:
             self.ssc.servomove(ms, self.gat, gat2)
             while self.ssc.sendservopos(self.gat) != gat2:
                 break  # up A
@@ -230,7 +230,5 @@ class Move:
     def right(self,ch):
         self.stand(ch)
 
-
-mve = Move()
-
-
+if __name__ == '__main__':
+    pass

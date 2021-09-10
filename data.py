@@ -3,7 +3,7 @@ import exceptions
 import serial
 import GaiaB
 import Gaialogic as glog
-#import temp as tmp
+import temp
 
 cbatt = 0  # 1
 mbatt = 0  # 2
@@ -24,10 +24,7 @@ touchcharge = 1
 needscharging = 0
 temp = 0
 pres = 0
-
-
-# ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
-
+tmp=temp.BMP388()
 
 def send_cbatt():
     return cbatt
@@ -287,7 +284,4 @@ def allbullshit():
 
 
 if __name__ == '__main__':
-    servomove(500, (3, 500), (15, 750), (6, 1500))
-    A = (15, 3, 6)
-
-    print(sendservopos(A))
+    pass

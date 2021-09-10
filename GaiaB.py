@@ -2,9 +2,10 @@ import time
 import random
 import Gaialogic as glog
 import data
+import Move
+import led
 
-pos = 1500
-needscharging = 0
+mve = Move.Move
 
 
 def send_gl():
@@ -90,6 +91,41 @@ def legandpos(leg, posa):
             pos = 750
 
     return
+
+
+class DailyRoutine:
+
+    def __init__(self):
+        pass
+
+    def gettimeofday(self,ch):
+        ltime = time.localtime()
+        lhour = ltime.tm_hour
+        lmin = ltime.tm_min
+        if ch == 1:
+        return lhour
+        if ch == 2:
+        
+        print(lhour)
+
+
+class MorningRoutine(DailyRoutine):
+
+    def setmorningr(self):
+        pass
+
+
+class DayRoutine(DailyRoutine):
+
+    def setdayr(self):
+        pass
+
+
+class NightRoutine(DailyRoutine):
+
+    def setnightr(self):
+        pass
+
 
 
 if __name__ == '__main__':
