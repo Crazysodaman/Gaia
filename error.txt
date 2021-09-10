@@ -1,4 +1,0 @@
-Main
-007/26/2021;11:32:22:...Charging but touch sensor failed
-07/26/2021;11:32:28:...Charging but touch sensor failed
-07/26/2021;11:33:27:...Charging but touch sensor failed

@@ -48,6 +48,6 @@ if __name__ == '__main__':
         #runpy.run_module('diagnostics')
         time.sleep(5)
         with open('start.txt', "w") as start:
-            start.write(str(0))
+            start.write(str(-1))
         time.sleep(0.5)
         # call("sudo restart -h now", shell=True)

@@ -41,14 +41,16 @@ if __name__ == '__main__':
     time.sleep(0.01)
     mf = open('log.txt', "a")
     mf.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Starting Up Gaia in mode: ")
+
     if EM_show() == -1:
         mf.write("OS start \n")  # OS starts and Gaia does not
         mf.close()
+        with open('start.txt', "w") as start:
+            start.write(str(0))
 
     elif EM_show() == 0:
         mf.write("Normal\n")
         mf.close()
-        Main()
 
     elif EM_show() == 1:
         mf.write("Safe\n")
@@ -60,16 +62,19 @@ if __name__ == '__main__':
         led.erleds_change(0)
         # t1.join(10)
         time.sleep(0.5)
-
+        with open('start.txt', "w") as start:
+            start.write(str(-1))
         # call("sudo shutdown -h now", shell=True)
 
     elif EM_show() == 2:
         mf.write("Diagnostics\n")
         mf.close()
         led.erleds_change(1)
-        error_leds()
+        led.error_leds()
         runpy.run_module('diagnostics')
         time.sleep(5)
         led.erleds_change(0)
         time.sleep(0.5)
+        with open('start.txt', "w") as start:
+            start.write(str(-1))
         # call("sudo restart -h now", shell=True)
