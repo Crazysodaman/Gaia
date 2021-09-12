@@ -88,6 +88,33 @@ class Move(Singleton):
         if ch == 5:  # Slow
             return random.randrange(750, 1000, 10)
 
+    def highapos(self, ch):
+        #TODO
+        if ch == 1:  # full range
+            return random.randrange(1600, 2500, 10)
+        if ch == 2:  # Fast
+            return random.randrange(100, 250, 10)
+        if ch == 3:  # FMid
+            return random.randrange(250, 500, 10)
+        if ch == 4:  # SMid
+            return random.randrange(500, 750, 10)
+        if ch == 5:  # Slow
+            return random.randrange(750, 1000, 10)
+
+    def highbpos(self, ch):
+        #TODO
+        if ch == 1:  # full range
+            return random.randrange(750, 1400, 10)
+        if ch == 2:  # Fast
+            return random.randrange(100, 250, 10)
+        if ch == 3:  # FMid
+            return random.randrange(250, 500, 10)
+        if ch == 4:  # SMid
+            return random.randrange(500, 750, 10)
+        if ch == 5:  # Slow
+            return random.randrange(750, 1000, 10)
+
+
     def servofilter(self, servo, pos, xpwm, ch=1):
         """
         :param servo: what servos
@@ -171,23 +198,39 @@ class Move(Singleton):
         self.ssc.servomove(ms, aspr2, aspr3)
         self.ssc.servomove(ms, aspl2, aspl3)
 
-    def forward(self, ch, Tt):
+    def forward(self, ch, ch1, ch2, ch3, Tt):
         """
-        :param ch: 1:Any 2:Fast 3:Mid 4:Slow
-        :param T: how long it will go forward
+        :param ch: 0- random 1-fixed
+        :param ch1: leg HighA 1:Any 2:Fast 3:Mid 4:Slow or 1750
+        :param ch2: leg HighA 1:Any 2:Fast 3:Mid 4:Slow or 1750
+        :param ch3: leg HighB 1:Any 2:Fast 3:Mid 4:Slow or 1250
+        :param Tt: how long it will go forward
         :return: speed
         """
-        ms = self.randomspeed(ch)
+        cntr = 1500
+        if ch ==0:
+            ms = self.randomspeed(ch1)
+            higha = self.highapos(ch2)
+            highb = self.highbpos(ch3)
+            rotatea =
+            rotateb
+        elif ch ==1:
+            ms =
+            higha = ch1
+            highb = ch1
+            rotatea= 900
+            rotateb= 2100
+
         self.stand(ch)
         time.sleep(0.2)
-        gat1 = self.posmaker(self.gat, 1500)  # legs default A
-        gat2 = self.posmakera(self.gat, 1250, 1750)  # up A
-        gar1 = self.posmaker(self.gar, 1500)  # legs default A
-        gar2 = self.posmakera(self.gar, 900, 2100)  # move A
-        gbt1 = self.posmaker(self.gbt, 1500)  # legs default B
-        gbt2 = self.posmakera(self.gbt, 1750, 1250)  # up B
-        gbr1 = self.posmaker(self.gbr, 1500)  # legs default B
-        gbr2 = self.posmakera(self.gbr, 2100, 900)  # move B
+        gat1 = self.posmaker(self.gat, cntr)  # legs default A
+        gat2 = self.posmakera(self.gat, highb, higha)  # up A
+        gar1 = self.posmaker(self.gar, cntr)  # legs default A
+        gar2 = self.posmakera(self.gar, rotatea, rotateb)  # move A
+        gbt1 = self.posmaker(self.gbt, cntr)  # legs default B
+        gbt2 = self.posmakera(self.gbt, higha, highb)  # up B
+        gbr1 = self.posmaker(self.gbr, cntr)  # legs default B
+        gbr2 = self.posmakera(self.gbr, rotateb, rotatea)  # move B
 
         t_end = time.time() + Tt
         while time.time() < t_end:
