@@ -11,6 +11,12 @@ class ThingsToDo(Singleton):
         self.monthlysdone = 0
         pass
 
+    def readdailysdone(self):
+        return self.dailysdone
+
+    def readmonthlysdone(self):
+        return self.monthlysdone
+
 
 class DailyGoals(ThingsToDo):
     def __init__(self):
@@ -18,10 +24,25 @@ class DailyGoals(ThingsToDo):
 
     def dailygoalcompleted(self, points):
         """
-        :param points: reward for completed or failure to complete (1 or -1)
+        :param points: reward for completed or failure to complete exp 1 for good or -1 for bad
         :return:
         """
-        emote.makehappysad(points)
+        if points >= 0:
+            self.dailysdone = self.dailysdone + 1
+            if emote.readhappysad() >= 90 and emote.readcalmmad() >= 90:
+                pass
+            elif emote.readcalmmad() <= 50:
+                emote.makehappysad(points)
+            else:
+                emote.makehappysad(points)
+                emote.makecalmmad(points)
+        elif points <= 0:
+            if emote.readhappysad() <= 10 and emote.readcalmmad() <= 10:
+                pass
+            elif emote.readhappysad() <= 10:
+                emote.makecalmmad(points)
+            else:
+                emote.makehappysad(points)
 
 
 class MonthlyGoals(ThingsToDo):

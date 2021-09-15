@@ -6,9 +6,11 @@ import data
 import Move
 import led
 import Emotions
+import thingstodo
 
 mve = Move.Move()
 emot = Emotions.Emotions()
+todo = thingstodo.ThingsToDo()
 
 
 class Singleton(object):
@@ -71,6 +73,7 @@ class DailyRoutine(Singleton):
     """
     Daily Routine stuff it does
     """
+
     def __init__(self):
         self.mbr = 10  # Morning LED Brightness
         self.dbr = 13  # Day LED Brightness
@@ -82,11 +85,14 @@ class MorningRoutine(DailyRoutine):
     """
     Morning Routine stuff it does
     """
+
     def __init__(self):
         super(MorningRoutine, self).__init__()
 
     def __enter__(self):
         led.set_pixels(self.ledcolor, self.mbr)
+        if todo.readdailysdone() != 0:
+            todo.dailysdone = 0
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -100,6 +106,7 @@ class DayRoutine(DailyRoutine):
     """
     Daytime Routine stuff it does
     """
+
     def __init__(self):
         super(DayRoutine, self).__init__()
 
@@ -118,6 +125,7 @@ class NightRoutine(DailyRoutine):
     """
     Nighttime Routine stuff it does
     """
+
     def __init__(self):
         super(NightRoutine, self).__init__()
 
@@ -136,6 +144,7 @@ class RunRoutine(Singleton):
     """
     Running the Routine stuff
     """
+
     def __init__(self):
         self.mr = MorningRoutine()
         self.dr = DayRoutine()

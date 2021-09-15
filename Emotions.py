@@ -39,6 +39,10 @@ class Emotions(Singleton):
         self.mhs = self.mhs + i
         return self.mhs
 
+    def makecalmmad(self, i):
+        self.mcm = self.mcm + i
+        return self.mcm
+
 
 class HappySad(Emotions):
 
