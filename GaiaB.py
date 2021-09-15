@@ -68,7 +68,9 @@ def is_charging():
 
 
 class DailyRoutine(Singleton):
-
+    """
+    Daily Routine stuff it does
+    """
     def __init__(self):
         self.mbr = 10  # Morning LED Brightness
         self.dbr = 13  # Day LED Brightness
@@ -77,7 +79,9 @@ class DailyRoutine(Singleton):
 
 
 class MorningRoutine(DailyRoutine):
-
+    """
+    Morning Routine stuff it does
+    """
     def __init__(self):
         super(MorningRoutine, self).__init__()
 
@@ -93,7 +97,9 @@ class MorningRoutine(DailyRoutine):
 
 
 class DayRoutine(DailyRoutine):
-
+    """
+    Daytime Routine stuff it does
+    """
     def __init__(self):
         super(DayRoutine, self).__init__()
 
@@ -109,7 +115,9 @@ class DayRoutine(DailyRoutine):
 
 
 class NightRoutine(DailyRoutine):
-
+    """
+    Nighttime Routine stuff it does
+    """
     def __init__(self):
         super(NightRoutine, self).__init__()
 
@@ -125,7 +133,9 @@ class NightRoutine(DailyRoutine):
 
 
 class RunRoutine(Singleton):
-
+    """
+    Running the Routine stuff
+    """
     def __init__(self):
         self.mr = MorningRoutine()
         self.dr = DayRoutine()

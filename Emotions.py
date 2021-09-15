@@ -35,6 +35,10 @@ class Emotions(Singleton):
         self.mgm = random.randrange(0, 100, 5)
         return self.mgm
 
+    def makehappysad(self, i):
+        self.mhs = self.mhs + i
+        return self.mhs
+
 
 class HappySad(Emotions):
 

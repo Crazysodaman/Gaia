@@ -6,6 +6,7 @@ from GaiaB import Singleton
 
 class Move(Singleton):
     """
+    Handles all Servos
        servo and numbers
        FRR-8   FLR-24
        FRT-7   FLT-23
@@ -88,32 +89,62 @@ class Move(Singleton):
         if ch == 5:  # Slow
             return random.randrange(750, 1000, 10)
 
-    def highapos(self, ch):
-        #TODO
+    def highapos(self, ch=4):
+        """
+        Range of motion for servo group A
+        :param ch: 1:full 2: Short 3: Mid 4:Long
+        :return:
+        """
         if ch == 1:  # full range
             return random.randrange(1600, 2500, 10)
-        if ch == 2:  # Fast
-            return random.randrange(100, 250, 10)
-        if ch == 3:  # FMid
-            return random.randrange(250, 500, 10)
-        if ch == 4:  # SMid
-            return random.randrange(500, 750, 10)
-        if ch == 5:  # Slow
-            return random.randrange(750, 1000, 10)
+        if ch == 2:  # Short
+            return random.randrange(1600, 1900, 10)
+        if ch == 3:  # Mid
+            return random.randrange(1900, 2100, 10)
+        if ch == 4:  # Long
+            return random.randrange(2100, 2500, 10)
 
-    def highbpos(self, ch):
-        #TODO
+    def highbpos(self, ch=4):
+        """
+        Range of motion for servo group B
+        :param ch: 1:full 2: Short 3: Mid 4:Long
+        """
         if ch == 1:  # full range
             return random.randrange(750, 1400, 10)
-        if ch == 2:  # Fast
-            return random.randrange(100, 250, 10)
-        if ch == 3:  # FMid
-            return random.randrange(250, 500, 10)
-        if ch == 4:  # SMid
-            return random.randrange(500, 750, 10)
-        if ch == 5:  # Slow
-            return random.randrange(750, 1000, 10)
+        if ch == 2:  # Short
+            return random.randrange(1200, 1400, 10)
+        if ch == 3:  # Mid
+            return random.randrange(900, 1200, 10)
+        if ch == 4:  # Long
+            return random.randrange(750, 900, 10)
 
+    def rotateapos(self, ch=4):
+        """
+        Range of motion for servo group B
+        :param ch: 1:full 2: Short 3: Mid 4:Long
+        """
+        if ch == 1:  # full range
+            return random.randrange(800, 1400, 10)
+        if ch == 2:  # Short
+            return random.randrange(1200, 1400, 10)
+        if ch == 3:  # Mid
+            return random.randrange(1000, 1200, 10)
+        if ch == 4:  # Long
+            return random.randrange(800, 1000, 10)
+
+    def rotatebpos(self, ch=4):
+        """
+        Range of motion for servo group B
+        :param ch: 1:full 2: Short 3: Mid 4:Long
+        """
+        if ch == 1:  # full range
+            return random.randrange(1600, 2200, 10)
+        if ch == 2:  # Short
+            return random.randrange(1600, 1800, 10)
+        if ch == 3:  # Mid
+            return random.randrange(1800, 2000, 10)
+        if ch == 4:  # Long
+            return random.randrange(2000, 2200, 10)
 
     def servofilter(self, servo, pos, xpwm, ch=1):
         """
@@ -198,28 +229,31 @@ class Move(Singleton):
         self.ssc.servomove(ms, aspr2, aspr3)
         self.ssc.servomove(ms, aspl2, aspl3)
 
-    def forward(self, ch, ch1, ch2, ch3, Tt):
+    def forward(self, tt, ch=1, ch1=1, ch2=1750, ch3=1250, ch4=900, ch5=2100):
         """
+        :param tt: how long it will go forward
         :param ch: 0- random 1-fixed
-        :param ch1: leg HighA 1:Any 2:Fast 3:Mid 4:Slow or 1750
-        :param ch2: leg HighA 1:Any 2:Fast 3:Mid 4:Slow or 1750
-        :param ch3: leg HighB 1:Any 2:Fast 3:Mid 4:Slow or 1250
-        :param Tt: how long it will go forward
+        :param ch1: Speed of servo 1:Any 2:Fast 3:Mid 4:Slow or 50
+        :param ch2: leg HighA 1:Any 2:Short 3:Mid 4:Long or 1750
+        :param ch3: leg HighB 1:Any 2:Short 3:Mid 4:Long or 1250
+        :param ch4: rotate A 1:Any 2:Short 3:Mid 4:Long or 900
+        :param ch5: rotate B 1:Any 2:Short 3:Mid 4:Long or 2100
         :return: speed
         """
+        global rotatea, rotateb, highb, higha, ms
         cntr = 1500
-        if ch ==0:
+        if ch == 0:
             ms = self.randomspeed(ch1)
             higha = self.highapos(ch2)
             highb = self.highbpos(ch3)
-            rotatea =
-            rotateb
-        elif ch ==1:
-            ms =
-            higha = ch1
-            highb = ch1
-            rotatea= 900
-            rotateb= 2100
+            rotatea = self.rotateapos(ch4)
+            rotateb = self.rotatebpos(ch5)
+        elif ch == 1:
+            ms = self.setspeed(ch1)
+            higha = ch2
+            highb = ch3
+            rotatea = ch4
+            rotateb = ch5
 
         self.stand(ch)
         time.sleep(0.2)
@@ -232,7 +266,7 @@ class Move(Singleton):
         gbr1 = self.posmaker(self.gbr, cntr)  # legs default B
         gbr2 = self.posmakera(self.gbr, rotateb, rotatea)  # move B
 
-        t_end = time.time() + Tt
+        t_end = time.time() + tt
         while time.time() < t_end:
             self.ssc.servomove(ms, self.gat, gat2)
             while self.ssc.sendservopos(self.gat) != gat2:
@@ -267,12 +301,13 @@ class Move(Singleton):
         self.stand(ch)
         pass
 
-    def left(self,ch):
+    def left(self, ch):
         self.stand(ch)
         pass
 
-    def right(self,ch):
+    def right(self, ch):
         self.stand(ch)
+
 
 if __name__ == '__main__':
     pass
