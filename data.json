@@ -8,5 +8,10 @@
   {"Goals": [
     {"dailysdone": "0"},
     {"monthlysdone": "0"},
-    {"yearlysdone": "0"}]}
+    {"yearlysdone": "0"}]},
+  {"Diagnostics":[
+    {"ledtest": "1"},
+    {"servotest": "1"},
+    {"IMUtest": "1"},
+    {"BMPtest": "1"}]}
 ]
