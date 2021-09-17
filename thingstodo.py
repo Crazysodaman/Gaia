@@ -1,4 +1,5 @@
 import math
+import json
 from Emotions import Emotions
 from GaiaB import Singleton
 
@@ -9,6 +10,7 @@ class ThingsToDo(Singleton):
     def __init__(self):
         self.dailysdone = 0
         self.monthlysdone = 0
+        self.yearlysdone = 0
         pass
 
     def readdailysdone(self):

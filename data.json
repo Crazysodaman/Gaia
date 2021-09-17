@@ -1,0 +1,12 @@
+[
+  {"Start":
+    {"mode": "0"}},
+  {"Emotions": [
+    {"mhs": "0"},
+    {"mcm": "0"},
+    {"mgm": "0"}]},
+  {"Goals": [
+    {"dailysdone": "0"},
+    {"monthlysdone": "0"},
+    {"yearlysdone": "0"}]}
+]

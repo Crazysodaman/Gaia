@@ -134,6 +134,9 @@ class NightRoutine(DailyRoutine):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
+        if todo.readmonthlysdone():
+            # TODO
+            pass
         led.strip.clear_strip()
 
     def sleepy(self):
