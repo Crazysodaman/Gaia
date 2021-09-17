@@ -1,6 +1,6 @@
 import time
 import data
-import GaiaB as gb
+
 
 
 def send_gaia():

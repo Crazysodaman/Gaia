@@ -1,5 +1,6 @@
 import runpy
 import time
+import json
 from subprocess import call
 import threading as th
 import led
@@ -9,13 +10,14 @@ EM = 0
 
 def EM_read(data):
     global EM
-    EM = int(data.strip(''))
+    EM = data
 
 
 def EM_show():
     return EM
 
 # TODO Build a file checker for the EM varable
+
 
 def Main():
     # lock.acquire()
@@ -36,8 +38,9 @@ def Main():
 if __name__ == '__main__':
     led.strip.clear_strip()
     time.sleep(0.01)
-    with open('start.txt', "r") as start:
-        EM_change(start.read())
+    with open("data.json", "r") as start:
+        jstart = json.load(start)
+        EM_read(jstart["Start"]["mode"])
     time.sleep(0.01)
     mf = open('log.txt', "a")
     mf.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Starting Up Gaia in mode: ")

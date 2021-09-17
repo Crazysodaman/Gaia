@@ -1,6 +1,13 @@
-import math
-ms=1
+import json
 
-ms=ms+ -1
+EM = 0
 
-print(ms)
+
+def EM_read(data):
+    global EM
+    EM = data
+
+
+with open("data.json", "r") as starts:
+    jstart = json.load(starts)
+    print(jstart["Start"]["mode"])

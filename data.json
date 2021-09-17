@@ -1,17 +1,18 @@
-[
-  {"Start":
-    {"mode": "0"}},
-  {"Emotions": [
-    {"mhs": "0"},
-    {"mcm": "0"},
-    {"mgm": "0"}]},
-  {"Goals": [
-    {"dailysdone": "0"},
-    {"monthlysdone": "0"},
-    {"yearlysdone": "0"}]},
-  {"Diagnostics":[
-    {"ledtest": "1"},
-    {"servotest": "1"},
-    {"IMUtest": "1"},
-    {"BMPtest": "1"}]}
-]
+{"Start":
+{"mode": "0"},
+"Emotions": [
+{"mhs": "0"},
+{"mcm": "0"},
+{"mgm": "0"}
+],
+"Goals": [
+{"dailysdone": "0"},
+{"monthlysdone": "0"},
+{"yearlysdone": "0"}
+],
+"Diagnostics":[
+{"ledtest": "1"},
+{"servotest": "1"},
+{"IMUtest": "1"},
+{"BMPtest": "1"}]
+}

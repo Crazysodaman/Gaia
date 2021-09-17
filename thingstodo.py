@@ -1,12 +1,11 @@
 import math
 import json
 from Emotions import Emotions
-from GaiaB import Singleton
 
 emote = Emotions()
 
 
-class ThingsToDo(Singleton):
+class ThingsToDo:
     def __init__(self):
         self.dailysdone = 0
         self.monthlysdone = 0

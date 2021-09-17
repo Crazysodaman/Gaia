@@ -1,10 +1,9 @@
 import data
 import random
 import time
-from GaiaB import Singleton
 
 
-class Move(Singleton):
+class Move:
     """
     Handles all Servos
        servo and numbers
@@ -310,4 +309,6 @@ class Move(Singleton):
 
 
 if __name__ == '__main__':
-    pass
+    mve=Move()
+    mve.stand(1)
+    mve.forward(20, 0, 1,1,1,1,1)

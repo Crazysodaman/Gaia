@@ -1,9 +1,8 @@
 import time
 import exceptions
 import serial
-import GaiaB
 import Gaialogic as glog
-import temp
+#import temp
 
 cbatt = 0  # 1
 mbatt = 0  # 2
@@ -24,7 +23,7 @@ touchcharge = 1
 needscharging = 0
 temp = 0
 pres = 0
-tmp=temp.BMP388()
+#tmp=temp.BMP388()
 
 def send_cbatt():
     return cbatt

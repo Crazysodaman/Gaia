@@ -1,8 +1,6 @@
 import random
-from GaiaB import Singleton
 
-
-class Emotions(Singleton):
+class Emotions:
 
     def __init__(self):
         self.mhs = 50  # happy sad index (50 is neutral)
