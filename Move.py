@@ -309,6 +309,6 @@ class Move:
 
 
 if __name__ == '__main__':
-    mve=Move()
+    mve = Move()
     mve.stand(1)
-    mve.forward(20, 0, 1,1,1,1,1)
+    mve.forward(20, 0, 1, 1, 1, 1, 1)
