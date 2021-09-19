@@ -2,6 +2,7 @@ import time
 import led
 import data
 import Move
+import filehandler as fh
 
 ledtest = 0
 servotest = 0
@@ -71,14 +72,14 @@ def testled():
 
 
 def servo_test():
-    hia=1250
-    hib= 1750
+    hia = 1250
+    hib = 1750
     if servotest_send() == 1:
         with open('diagnostics.txt', "a") as da:
             da.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Servo Test Start \n")
             da.write("Servos that did not go to position:")
             time.sleep(1)
-            da.write(mve.testservos(mve.gbf, hia,hib) + ", ")
+            da.write(mve.testservos(mve.gbf, hia, hib) + ", ")
             time.sleep(1)
             mve.stand(1)
             da.write(mve.testservos(mve.gaf, hib, hia) + ", ")
@@ -122,16 +123,16 @@ if __name__ == '__main__':
     di = open('diagnostics.txt', "a")
     di.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Starting Diagnostics \n")
     di.close()
-    ledtest_change(1)  # 1 ON 0 OFF for led test
+    ledtest_change(fh.readdataa("Diagnostics", "ledtest"))  # 1 ON 0 OFF for led test
     testled()
     time.sleep(1)
-    servotest_change(1)  # 1 ON 0 OFF for servo test
+    servotest_change(fh.readdataa("Diagnostics", "servotest"))  # 1 ON 0 OFF for servo test
     servo_test()
     time.sleep(1)
-    IMUtest_change(1)  # 1 ON 0 OFF for IMU test
+    IMUtest_change(fh.readdataa("Diagnostics", "IMUtest"))  # 1 ON 0 OFF for IMU test
     testIMU()
     time.sleep(1)
-    BMPtest_change(1)  # 1 ON 0 OFF for BMP test
+    BMPtest_change(fh.readdataa("Diagnostics", "BMPtest"))  # 1 ON 0 OFF for BMP test
     testBMP()
     time.sleep(1)
     di = open('diagnostics.txt', "a")

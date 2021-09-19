@@ -1,16 +1,28 @@
-{"Start":
-    {"mode": "0"},
-"Emotions": {
-    "mhs": "0",
-    "mcm": "0",
-    "mgm": "0"},
-"Goals": {
-    "dailysdone": "0",
-    "monthlysdone": "0",
-    "yearlysdone": "0"},
-"Diagnostics":{
-    "ledtest": "1",
-    "servotest": "1",
-    "IMUtest": "1",
-    "BMPtest": "1"}
+{
+    "Start": {
+        "mode": 0
+    },
+    "Emotions": {
+        "mhs": 50,
+        "mcm": 50,
+        "mgm": 50
+    },
+    "Goals": {
+        "dailysdone": "0",
+        "monthlysdone": "0",
+        "yearlysdone": "0"
+    },
+    "Diagnostics": {
+        "ledtest": "1",
+        "servotest": "1",
+        "IMUtest": "1",
+        "BMPtest": "1"
+    },
+    "LedColors": {
+        "Red": "0xFF0000",
+        "Green": "0x00FF00",
+        "Blue": "0x0000FF",
+        "Purple": "0x0F000F",
+
+    }
 }

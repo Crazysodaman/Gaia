@@ -1,19 +1,29 @@
 import json
 
 
-def readdata(*args):
+def readdataa(key1: str, key2: str):
+    """
+    do not for get ( " " )
+    :param key1: 1st Key will have cap letter for 1st letter ex "Start"
+    :param key2: 2nd Key ex "mode"
+    :return: value
+    """
     with open("data.json", "r") as data:
         jdata = json.load(data)
-        for i in args:
-            
-        return jdata
+        return jdata[key1][key2]
 
 
-def writedata():
+def writedataa(value, key1: str, key2: str):
     with open("data.json", "r") as data:
-        jdata = json.dump(data)
+        jdata = json.load(data)
+    jdata[key1][key2] = (value)
+    with open("data.json", "w") as data:
+        json.dump(jdata, data, indent=4)
 
 
-ozzy = json.load(open("data.json", "r"))["Diagnostics"]["ledtest"]
-print(ozzy)
-print(readdata("Emotions", "mcm"))
+if __name__ == '__main__':
+    #print(readdataa("Emotions", "mcm"))
+    writedataa(50, "Emotions", "mcm")
+    #print(readdataa("Emotions", "mcm"))
+    with open("data.json", "r") as data:
+        print(json.load(data))

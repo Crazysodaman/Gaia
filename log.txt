@@ -1,0 +1,3 @@
+09/19/2021 11:46:52: Starting Up Gaia in mode: 09/19/2021 11:47:34: Starting Up Gaia in mode: 09/19/2021 11:47:54: Starting Up Gaia in mode: Diagnostics
+09/19/2021 11:48:29: Starting Up Gaia in mode: Safe
+09/19/2021 11:48:44: Starting Up Gaia in mode: OS start 
