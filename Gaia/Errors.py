@@ -1,17 +1,20 @@
 import time
+
 import config as cfg
-import logging
 import led
 from led import all_leds
-led=all_leds()
+
+led = all_leds()
+
+
 def Erun():
     while True:
-        if cfg.EN==-1:
+        if cfg.EN == -1:
             e = open('Errors.txt', "w")
-            e.writelines(cfg.tm(2) )
+            e.writelines(cfg.tm(2))
             e.close()
-            cfg.EN=0
-        if cfg.EN==1: #Thread ended
+            cfg.EN = 0
+        if cfg.EN == 1:  # Thread ended
             e = open('Errors.txt', "a")
             e.writelines(cfg.tm(4))
             e.write('Thread ended unexpectedly \n')
@@ -19,7 +22,7 @@ def Erun():
             e.write(.enumerate())
             e.close()
             break
-        if cfg.EN==2:
+        if cfg.EN == 2:
             e = open('Errors.txt', "a")
             e.writelines(cfg.tm(4))
             e.write('Johnny is love \n')
@@ -30,10 +33,10 @@ def Erun():
             e.writelines(cfg.tm(4))
             e.write('Johnny is hungery \n')
             e.close()
-            cfg.run_mode=0
+            cfg.run_mode = 0
             break
 
-    if cfg.EN ==3:
+    if cfg.EN == 3:
         while True:
             cfg.strip.clear_strip()
             led.set_Critical_Error_pixels()
@@ -41,6 +44,7 @@ def Erun():
             time.sleep(1)
             cfg.strip.clear_strip()
             time.sleep(1)
+
 
 if __name__ == '__main__':
     Erun()

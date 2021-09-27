@@ -17,12 +17,5 @@
         "servotest": "1",
         "IMUtest": "1",
         "BMPtest": "1"
-    },
-    "LedColors": {
-        "Red": "0xFF0000",
-        "Green": "0x00FF00",
-        "Blue": "0x0000FF",
-        "Purple": "0x0F000F",
-
     }
 }

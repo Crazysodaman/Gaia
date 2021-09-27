@@ -1,8 +1,7 @@
-import socket, time
+import socket
 
 HOST = '78.45.36.46'
 PORT = 60001
-
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:

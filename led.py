@@ -72,6 +72,13 @@ def set_pixels(color, brightness=10):  # for color it is Hex and 0x to the start
         strip.set_pixel_rgb(led_number, color, brightness)
 
 
+class Color:
+    RED = 0xFF0000
+    GREEN = 0x00FF00
+    BLUE = 0x0000FF
+    PURPLE = 0x0F000F
+
+
 if __name__ == '__main__':
     import time
 

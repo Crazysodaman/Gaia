@@ -1,13 +1,9 @@
-import time
-import sys
-import socket
 import os
+import time
+
 import config as cfg
-import serial
-from led import all_leds
-import led
 import ssc32 as s32
-import RPi.GPIO as GPIO
+from led import all_leds
 
 # led setup
 ledclass = all_leds()

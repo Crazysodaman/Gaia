@@ -16,9 +16,9 @@ def readdataa(key1: str, key2: str):
 def writedataa(value, key1: str, key2: str):
     with open("data.json", "r") as data:
         jdata = json.load(data)
-    jdata[key1][key2] = (value)
-    with open("data.json", "w") as data:
-        json.dump(jdata, data, indent=4)
+    jdata[key1][key2] = value
+    with open("data.json", "w") as data1:
+        json.dump(jdata, data1, indent=4)
 
 
 if __name__ == '__main__':

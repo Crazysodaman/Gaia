@@ -1,7 +1,4 @@
 import config as cfg
-import time
-from apa102_pi.driver import apa102
-from apa102_pi.colorschemes import colorschemes
 
 
 # usage:
@@ -40,4 +37,3 @@ class all_leds:
     def set_pixels(self, color, brightness):  # for color it is Hex and 0x to the start of the color)
         for led_number in range(60):
             cfg.strip.set_pixel_rgb(led_number, color, brightness)
-

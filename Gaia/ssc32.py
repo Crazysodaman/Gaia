@@ -1,5 +1,6 @@
-import serial
 import time
+
+import serial
 
 ssc = serial.Serial("/dev/ttyUSB0", 115200, timeout=0);
 ssc.open

@@ -11,6 +11,7 @@ import thingstodo
 mve = Move.Move()
 emot = Emotions.Emotions()
 todo = thingstodo.ThingsToDo()
+C=led.Color()
 
 
 class Singleton(object):
@@ -78,7 +79,7 @@ class DailyRoutine(Singleton):
         self.mbr = 10  # Morning LED Brightness
         self.dbr = 13  # Day LED Brightness
         self.nbr = 5  # Night LED Brightness
-        self.ledcolor = 0x0F000F  # LED Color
+        self.ledcolor = C.PURPLE  # LED Color
 
 
 class MorningRoutine(DailyRoutine):

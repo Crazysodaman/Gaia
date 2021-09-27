@@ -240,7 +240,6 @@ class SSC32:
         for long in zip(servo, pos):
             command += f"#{long[0]} P{long[1]} "
         command += f"T{ms} \r"
-        # print(command)
         with serial.Serial("/dev/ttyUSB0", 115200, timeout=0.006) as ssc:
             ssc.write(command.encode())
 
