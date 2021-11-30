@@ -1,6 +1,7 @@
 import random
 import filehandler as fh
 
+
 class Emotions:
 
     def __init__(self):
@@ -31,14 +32,13 @@ class Emotions:
         return self.mgm
 
     def filehappysad(self):
-
-        return fh.readdataa("Emotions","mhs")
+        return fh.readdataa("Emotions", "mhs")
 
     def filecalmmad(self):
-        return fh.readdataa("Emotions","mcm")
+        return fh.readdataa("Emotions", "mcm")
 
     def filegoodmischief(self):
-        return fh.readdataa("Emotions","mgm")
+        return fh.readdataa("Emotions", "mgm")
 
     def savehappysad(self):
         return fh.writedataa(self.mhs, "Emotions", "mhs")
@@ -95,6 +95,7 @@ class GoodMischief(Emotions):
     def __init__(self):
         super(GoodMischief, self).__init__()
 
+
 if __name__ == '__main__':
-    Emote=Emotions()
+    Emote = Emotions()
     Emote.setneutralsave()

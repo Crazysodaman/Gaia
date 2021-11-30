@@ -22,8 +22,8 @@ def writedataa(value, key1: str, key2: str):
 
 
 if __name__ == '__main__':
-    #print(readdataa("Emotions", "mcm"))
+    # print(readdataa("Emotions", "mcm"))
     writedataa(50, "Emotions", "mcm")
-    #print(readdataa("Emotions", "mcm"))
+    # print(readdataa("Emotions", "mcm"))
     with open("data.json", "r") as data:
         print(json.load(data))
