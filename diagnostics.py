@@ -120,9 +120,12 @@ def testBMP():
 
 
 if __name__ == '__main__':
+    lg = open('log.txt', "a")
     di = open('diagnostics.txt', "a")
     di.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Starting Diagnostics \n")
+    lg.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Starting Diagnostics \n")
     di.close()
+    lg.close()
     ledtest_change(fh.readdataa("Diagnostics", "ledtest"))  # 1 ON 0 OFF for led test
     testled()
     time.sleep(1)
@@ -135,6 +138,9 @@ if __name__ == '__main__':
     BMPtest_change(fh.readdataa("Diagnostics", "BMPtest"))  # 1 ON 0 OFF for BMP test
     testBMP()
     time.sleep(1)
+    lg = open('log.txt', "a")
     di = open('diagnostics.txt', "a")
+    lg.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Ending Diagnostics \n")
     di.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Ending Diagnostics \n")
+    lg.close
     di.close()

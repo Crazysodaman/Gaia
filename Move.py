@@ -228,7 +228,7 @@ class Move:
         self.ssc.servomove(ms, aspr2, aspr3)
         self.ssc.servomove(ms, aspl2, aspl3)
 
-    def forward(self, tt, ch=1, ch1=1, ch2=1750, ch3=1250, ch4=900, ch5=2100):
+    def movement(self, tt, ch=1, ch1=1, ch2=1750, ch3=1250, ch4=900, ch5=2100):
         """
         :param tt: how long it will go forward
         :param ch: 0- random 1-fixed
@@ -255,7 +255,6 @@ class Move:
             rotateb = ch5
 
         self.stand(ch)
-        time.sleep(0.2)
         gat1 = self.posmaker(self.gat, cntr)  # legs default A
         gat2 = self.posmakera(self.gat, highb, higha)  # up A
         gar1 = self.posmaker(self.gar, cntr)  # legs default A
@@ -264,6 +263,7 @@ class Move:
         gbt2 = self.posmakera(self.gbt, higha, highb)  # up B
         gbr1 = self.posmaker(self.gbr, cntr)  # legs default B
         gbr2 = self.posmakera(self.gbr, rotateb, rotatea)  # move B
+        time.sleep(0.2)
 
         t_end = time.time() + tt
         while time.time() < t_end:
@@ -296,19 +296,9 @@ class Move:
                 break  # Move B
         self.stand(ch)
 
-    def backward(self, ch):
-        self.stand(ch)
-        pass
-
-    def left(self, ch):
-        self.stand(ch)
-        pass
-
-    def right(self, ch):
-        self.stand(ch)
-
 
 if __name__ == '__main__':
     mve = Move()
     mve.stand(1)
-    mve.forward(20, 0, 1, 1, 1, 1, 1)
+    mve.movement(20, 1)
+    mve.movement(20, 1)

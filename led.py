@@ -93,3 +93,4 @@ if __name__ == '__main__':
     strip.clear_strip()
     time.sleep(1)
     error_leds()
+    strip.set_pixels(Color.PURPLE, 20)
