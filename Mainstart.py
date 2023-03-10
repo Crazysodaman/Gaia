@@ -45,15 +45,18 @@ if __name__ == '__main__':
     EM_read(fh.readdataa("Start", "mode"))
     time.sleep(0.01)
     mf = open('log.txt', "a")
+    time.sleep(0.5)
     mf.write(time.strftime("%m/%d/%Y %H:%M:%S: ") + "Starting Up Gaia in mode: ")
 
     if EM_show() == -1:
         mf.write("OS start \n")  # OS starts and Gaia does not
         mf.close()
+        time.sleep(0.5)
         fh.writedataa(0, "Start", "mode")
 
     elif EM_show() == 0:
         mf.write("Normal\n")
+        time.sleep(0.5)
         mf.close()
 
     elif EM_show() == 1:
@@ -67,6 +70,7 @@ if __name__ == '__main__':
         # t1.join(10)
         time.sleep(0.5)
         fh.writedataa(-1, "Start", "mode")
+        time.sleep(0.5)
         call("sudo shutdown -h now", shell=True)
 
     elif EM_show() == 2:
@@ -79,8 +83,10 @@ if __name__ == '__main__':
         led.erleds_change(0)
         time.sleep(0.5)
         fh.writedataa(-1, "Start", "mode")
+        time.sleep(0.5)
         call("sudo reboot -h now", shell=True)
 
     else:
         fh.writedataa(-1, "Start", "mode")
+        time.sleep(0.5)
         call("sudo reboot -h now", shell=True)
